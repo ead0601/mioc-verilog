@@ -33,7 +33,10 @@ module testbench ();
       end
 
       // Write header
-      $fwrite(file_w, "in1 in2 in3 in4 - q qbar\n");      
+      $fwrite(file_w, "in1 in2 in3 in4 - q qbar\n");
+
+      // STDOUT as well
+      $display("in1 in2 in3 in4 - q qbar\n");      
 
       // Give a reset value
       //
@@ -48,15 +51,14 @@ module testbench ();
    initial begin
       while (1) begin
 	 count = $fscanf(file_r, "%b\n", input_data);
-	 #10;
-	 $fwrite(file_w, "%b %b %b %b - %b %b\n",in1,in2,in3,in4,q,qbar);
-	 #90;       
+	 #100;
 	 if (!$feof(file_r)) begin
 	    in1 = input_data[3];
 	    in2 = input_data[2];	    
 	    in3 = input_data[1];
 	    in4 = input_data[0];
-	    $display("%b %b %b %b",in1,in2,in3,in4);	    
+	    $fwrite(file_w, "%b %b %b %b - %b %b\n",in1,in2,in3,in4,q,qbar);
+    	    $display("%b %b %b %b - %b %b",in1,in2,in3,in4,q,qbar); 
 	 end
 	 else begin
 	    $fclose(file_r);
