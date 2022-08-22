@@ -26,11 +26,8 @@ module mioc_flop_nmos(
 
    supply0 GND;
 
-   //tri     m1d, m2d, m3d, m4d, m5d, m6d, m7d, m8d;
-   //tri     m14d, m16d, m18d, m20d;
-
-   tri1    m8d, m3d, m5d;
-   tri0    m2d, m4d, m20d;
+   wire     m8d, m3d, m5d;
+   wire     m2d, m4d, m20d;   
    
    //nmos (drain,source,gate)
 
