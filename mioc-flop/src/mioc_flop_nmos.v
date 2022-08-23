@@ -83,7 +83,7 @@ module mioc_flop_nmos(
 
    nmos   m20 (m20d,GND,m8d);
 
-   assign qbar = m20d;
-   assign q    = m8d;
+   assign q    = m20d;
+   assign qbar = m8d;
 
 endmodule
