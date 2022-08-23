@@ -11,10 +11,11 @@ module mioc_flop_nmos(
     q,
     qbar,
 
-    in1,
-    in2,
-    in3,
-    in4);
+    in1,            // posedge reset
+    in2,            // negedge reset (???)
+    in3,            // inverted negedge reset  
+    in4             // posedge set
+    );
 
    output q;
    output qbar;
