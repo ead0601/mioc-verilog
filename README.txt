@@ -1,6 +1,6 @@
 # README.TXT
 #
-1) In this project we will be simulation the MIOC ASIC in verilog.
+1) In this project we will be simulating the MIOC ASIC in verilog.
 2) Each module is a directory, with its own make file and verification env.
 3) The top-level block will be called "mioc_top", but does not currently exist
 

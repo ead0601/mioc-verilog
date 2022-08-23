@@ -1,25 +1,40 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Aug 23 05:41:17 2022
+[*] Tue Aug 23 05:57:57 2022
 [*]
 [dumpfile] "/home/ediaz/repo/atari/mioc-verilog/mioc-flop/waves.vcd"
-[dumpfile_mtime] "Tue Aug 23 05:37:09 2022"
+[dumpfile_mtime] "Tue Aug 23 05:50:57 2022"
 [dumpfile_size] 1563
 [savefile] "/home/ediaz/repo/atari/mioc-verilog/mioc-flop/waves.gtkw"
 [timestart] 0
 [size] 1442 718
-[pos] -1 -1
+[pos] -285 157
 *-10.000000 2300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] testbench.
 [sst_width] 214
-[signals_width] 78
+[signals_width] 158
 [sst_expanded] 1
 [sst_vpaned_height] 197
 @28
 testbench.reg1.GND
+@200
+-(posedge reset)
+@28
 testbench.reg1.in1
+@200
+-
+-(negedge reset)
+@28
 testbench.reg1.in2
+@200
+-
+-(invert neg rst)
+@28
 testbench.reg1.in3
+@200
+-
+-(posedge set)
+@28
 testbench.reg1.in4
 @200
 -
@@ -32,6 +47,7 @@ testbench.reg1.m8d
 testbench.reg1.m20d
 @200
 -
+-(outputs)
 @28
 testbench.reg1.q
 testbench.reg1.qbar
