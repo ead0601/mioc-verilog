@@ -24,7 +24,7 @@ make waves    # clean, build, run also executed
 
 #TBD (to be done)
 #
-mkae compare  # compare DATA_OUT to DATA_GOLD
+make compare  # compare DATA_OUT to DATA_GOLD
 make cpld     # compile the cpld (not mos) version of MIOC
 make bitpat   # create CPLD bit pattern to upload
 

@@ -23,7 +23,7 @@ run :   build
 	$(RUN) a.out
 
 waves:  run
-	gtkwave waves.vcd
+	gtkwave waves.vcd waves.gtkw
 
 # Clean
 #
