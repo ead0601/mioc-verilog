@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Aug 23 09:22:23 2022
+[*]
+[dumpfile] "/home/ediaz/repo/atari/mioc-verilog/mioc-and2-nor/waves.vcd"
+[dumpfile_mtime] "Tue Aug 23 09:20:42 2022"
+[dumpfile_size] 1137
+[savefile] "/home/ediaz/repo/atari/mioc-verilog/mioc-and2-nor/waves.gtkw"
+[timestart] 0
+[size] 1442 718
+[pos] 2084 195
+*-10.000000 2300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[sst_width] 214
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 197
+@28
+testbench.reg1.GND
+@200
+-
+-(inputs)
+@28
+testbench.reg1.in1
+testbench.reg1.in2
+testbench.reg1.in3
+testbench.reg1.in4
+@200
+-
+-(internal nets)
+@28
+testbench.reg1.m1d
+testbench.reg1.m2d
+testbench.reg1.m4d
+@201
+-
+@200
+-(outputs)
+@28
+testbench.reg1.z
+[pattern_trace] 1
+[pattern_trace] 0
