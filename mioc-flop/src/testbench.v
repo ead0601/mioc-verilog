@@ -14,7 +14,7 @@ module testbench ();
    reg [3:0] input_data;
 
    integer   i,count;
-   integer   file_r, file_w; 
+   integer   file_r, file_w;
 
    // Init file handles and waveform dumping
    //
@@ -44,11 +44,9 @@ module testbench ();
       in2 <= 0;
       in3 <= 0;
       in4 <= 0;  
-   end
 
-   // Read pattern file till EOF and change input every 100ns
-   //
-   initial begin
+      // Drive patterns
+      //
       while (1) begin
 	 count = $fscanf(file_r, "%b\n", input_data);
 	 #100;
