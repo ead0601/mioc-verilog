@@ -100,49 +100,49 @@ module mioc_top(
    output CAS2_N       ; //: pin 40 : Active low column address strobe 2
 
    // OUTPUT WIRES
-   wire  RA7          ; //: pin 2 : (goes to U9 , RAM Address 7.This is the multiplexed RAM address MSB.)
-   wire  BUSRQ_N      ; //: pin18 : Active low bus request
-   wire  SPINDIS_N    ; //: pin19 : Active low Controller Spinner Interrupt Disable
-   wire  NETRST_N     ; //: pin20 : Active low - Reset for AdamNET
-   wire  AUXDECODE1_N ; //: pin 22 : Active low - Disables the onboard mem decode on CV board?
-   wire  RST_N        ; //: pin 23 : Active low reset - System Reset circuitry
-   wire  CPRST_N      ; //: pin 24 : Active low reset - not used
-   wire  AUXROMCS_N   ; //: pin 26 : Active low aux rom chip select - Slot 2 Expansion ROM CS
-   wire  ADDRBUFEN_N  ; //: pin 27 : Active low address buffer enable - according to earlier docs, enables/disables
+   wire  RA7           ; //: pin 2 : (goes to U9 , RAM Address 7.This is the multiplexed RAM address MSB.)
+   wire  BUSRQ_N       ; //: pin18 : Active low bus request
+   wire  SPINDIS_N     ; //: pin19 : Active low Controller Spinner Interrupt Disable
+   wire  NETRST_N      ; //: pin20 : Active low - Reset for AdamNET
+   wire  AUXDECODE1_N  ; //: pin 22 : Active low - Disables the onboard mem decode on CV board?
+   wire  RST_N         ; //: pin 23 : Active low reset - System Reset circuitry
+   wire  CPRST_N       ; //: pin 24 : Active low reset - not used
+   wire  AUXROMCS_N    ; //: pin 26 : Active low aux rom chip select - Slot 2 Expansion ROM CS
+   wire  ADDRBUFEN_N   ; //: pin 27 : Active low address buffer enable - according to earlier docs, enables/disables
                          //:     /BRFSH, /BMREQ, /BM1, and /BIORQ (disabled during DMA cycle)
-   wire  BOOTROMCS_N  ; //: pin 28 : Active low boot ROM chip select - For Smartwriter ROM
-   wire  EN245_N      ; //: pin 29 : Active low 245 enable - CV onboard decode enable/disable?
-   wire  IS3_N        ; //: pin 30 : Active low IS3 To Master 6801
-   wire  MUX          ; //: pin 37 : Output Mux signal for memory address signals for DRAM.
-   wire  RAS_N        ; //: pin 38 : Active low row address strobe
-   wire  CAS1_N       ; //: pin 39 : Active low column address strobe 1
-   wire  CAS2_N       ; //: pin 40 : Active low column address strobe 2
+   wire  BOOTROMCS_N   ; //: pin 28 : Active low boot ROM chip select - For Smartwriter ROM
+   wire  EN245_N       ; //: pin 29 : Active low 245 enable - CV onboard decode enable/disable?
+   wire  IS3_N         ; //: pin 30 : Active low IS3 To Master 6801
+   wire  MUX           ; //: pin 37 : Output Mux signal for memory address signals for DRAM.
+   wire  RAS_N         ; //: pin 38 : Active low row address strobe
+   wire  CAS1_N        ; //: pin 39 : Active low column address strobe 1
+   wire  CAS2_N        ; //: pin 40 : Active low column address strobe 2
 
 
    // INPUT WIRES
-   wire  BA15         ; //: pin 3 : Address line 15
-   wire  BA14         ; //: pin 4 : Address line 14
-   wire  BA13         ; //: pin 5 : Address line 13	                
-   wire  N_CVRST      ; //: pin 6 : Active low reset signal “Game Reset”
-   wire  BD0          ; //: pin 7 : Data line 0
-   wire  BD1          ; //: pin 8 : Data line 1
-   wire  BD2          ; //: pin 9 : Data line 2
-   wire  BD3          ; //: pin10 : Data line 3
-   wire  N_BWR        ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by
+   wire  BA15          ; //: pin 3 : Address line 15
+   wire  BA14          ; //: pin 4 : Address line 14
+   wire  BA13          ; //: pin 5 : Address line 13	                
+   wire  N_CVRST       ; //: pin 6 : Active low reset signal “Game Reset”
+   wire  BD0           ; //: pin 7 : Data line 0
+   wire  BD1           ; //: pin 8 : Data line 1
+   wire  BD2           ; //: pin 9 : Data line 2
+   wire  BD3           ; //: pin10 : Data line 3
+   wire  N_BWR         ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by
                          //:      by MA5,/IORQ, and A10
-   wire  BA6          ; //: pin12 : Address line 6
-   wire  BA7          ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
-   wire  IORQ_N       ; //: pin14 : Active low Z80 IO Request
-   wire  WAIT_N       ; //: pin15 : Active low wait signal, Memory wait state
-   wire  BUSAK_N      ; //: pin16 : Active low bus acknowledge - Z80 Control
-   wire  DMA_N        ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
-   wire  PBRST_N      ; //: pin 25 : Active low ADAM Reset switch for computer mode
-   wire  OS3_N        ; //: pin 31 : Active low OS3 From Master 6801
-   wire  BMREQ_N      ; //: pin 32 : Active low Buffered Memory Request
-   wire  BRD_N        ; //: pin 33 : Active low Buffered Memory Read
-   wire  BRFSH_N      ; //: pin 34 : Active low Buffered Memory Refresh
-   wire  BM1_N        ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
-   wire  B_PHI        ; //: pin 36 : Z80 Clock
+   wire  BA6           ; //: pin12 : Address line 6
+   wire  BA7           ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   wire  IORQ_N        ; //: pin14 : Active low Z80 IO Request
+   wire  WAIT_N        ; //: pin15 : Active low wait signal, Memory wait state
+   wire  BUSAK_N       ; //: pin16 : Active low bus acknowledge - Z80 Control
+   wire  DMA_N         ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   wire  PBRST_N       ; //: pin 25 : Active low ADAM Reset switch for computer mode
+   wire  OS3_N         ; //: pin 31 : Active low OS3 From Master 6801
+   wire  BMREQ_N       ; //: pin 32 : Active low Buffered Memory Request
+   wire  BRD_N         ; //: pin 33 : Active low Buffered Memory Read
+   wire  BRFSH_N       ; //: pin 34 : Active low Buffered Memory Refresh
+   wire  BM1_N         ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
+   wire  B_PHI         ; //: pin 36 : Z80 Clock
 
    // BLOCK NAMES ( tmp here for reference of module names )
    //    
@@ -157,20 +157,31 @@ module mioc_top(
 
    // INTERNAL WIRES
    //
-   wire  w_u1q, w_u1qb;           // u1 wires (basically outputs from u1)
+   wire  w_u1q, w_u1qb;           // u1 output wires 
+   wire  w_u2q, w_u2qb;           // u2 output wires 
 
-   wire  w_u36z;                  // u36 wire (output from u36)
+   wire  w_u39z;                  // u39 output wire 
   
    // COMPONENTS
    //
    mioc_flop_nmos u1 (.q(w_u1q),
 		      .qbar(w_u1qb),
 
-		      .in1(PBRST_N),
-		      .in2(w_u36z),
-		      .in3(BD3),
-		      .in4(BA13)
+		      .in1(PBRST_N),    // posedge reset	     
+		      .in2(w_u39z),     // negedge reset (???)   
+		      .in3(BD3),        // inverted negedge reset
+		      .in4(BA13)        // posedge set           
+		     );
+
+   mioc_flop_nmos u1 (.q((w_u2q),      
+		      .qbar((w_u2q),
+
+		      .in1(PBRST_N),    // posedge reset	     
+		      .in2(w_u39z),	// negedge reset (???)   
+		      .in3(BD2),	// inverted negedge reset
+		      .in4(BA13)	// posedge set           
 		     );
    
-   
+
+			 
 endmodule
