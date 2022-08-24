@@ -119,7 +119,10 @@ module mioc_top(
    wire  CAS2_N        ; //: pin 40 : Active low column address strobe 2
 
 
-   // POST IO PAD WIRES (pi = post pad internal)
+   // POST IO PAD WIRES (pi = post "pad internal")
+   //
+   // IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
+   // re-asignment occurs below in the wire assignment section
    //
    wire  pi_BA15          ; //: pin 3 : Address line 15
    wire  pi_BA14          ; //: pin 4 : Address line 14
@@ -155,7 +158,7 @@ module mioc_top(
    //.././mioc-nor2/src/mioc_nor2_nmos.v
    //.././mioc-top/src/mioc_top.v	   
 
-   // INTERNAL WIRES
+   // INTERNAL COMPONENT WIRES
    //
    wire  w_u1q, w_u1qb;           // u1 output wires 
    wire  w_u2q, w_u2qb;           // u2 output wires 
@@ -168,7 +171,7 @@ module mioc_top(
 		      .qbar(w_u1qb),
 
 		      .in1(pi_PBRST_N),    // posedge reset	     
-		      .in2(w_u39z),     // negedge reset (???)   
+		      .in2(w_u39z),        // negedge reset (???)   
 		      .in3(pi_BD3),        // inverted negedge reset
 		      .in4(pi_BA13)        // posedge set           
 		     );
@@ -177,13 +180,16 @@ module mioc_top(
 		      .qbar(w_u2q),
 
 		      .in1(pi_PBRST_N),    // posedge reset	     
-		      .in2(w_u39z),	// negedge reset (???)   
-		      .in3(pi_BD2),	// inverted negedge reset
-		      .in4(pi_BA13)	// posedge set           
+		      .in2(w_u39z),        // negedge reset (???)   
+		      .in3(pi_BD2),	   // inverted negedge reset
+		      .in4(pi_BA13)	   // posedge set           
 		     );
 
    
-   // IO PAD ASSIGNMENT
+   // WIRE ASSIGNMENTS
+   //
+   
+   // IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
    //
    assign  pi_BA15     = BA15      ; //: pin 3 : Address line 15
    assign  pi_BA14     = BA14      ; //: pin 4 : Address line 14
