@@ -33,10 +33,10 @@ module testbench ();
       end
 
       // Write header
-      $fwrite(file_w, "in1 in2 in3 in4 - z\n");
+      $fwrite(file_w, "in1 in2 - z\n");
 
       // STDOUT as well
-      $display("in1 in2 in3 in4 - z\n");      
+      $display("in1 in2 - z\n");      
 
       // Give a reset value
       //
@@ -51,12 +51,10 @@ module testbench ();
 	 count = $fscanf(file_r, "%b\n", input_data);
 	 #100;
 	 if (!$feof(file_r)) begin
-	    in1 = input_data[3];
-	    in2 = input_data[2];	    
-	    in3 = input_data[1];
-	    in4 = input_data[0];
-	    $fwrite(file_w, "%b %b %b %b - %b\n",in1,in2,in3,in4,z);
-    	    $display("%b %b %b %b - %b",in1,in2,in3,in4,z); 
+	    in1 = input_data[1];
+	    in2 = input_data[0];	    
+	    $fwrite(file_w, "%b %b - %b\n",in1,in2,z);
+    	    $display("%b %b - %b",in1,in2,z); 
 	 end
 	 else begin
 	    $fclose(file_r);
@@ -68,11 +66,9 @@ module testbench ();
    
    // Design
    //
-   mioc_and2_nor_nmos gate1(.z(z),
+   mioc_xnor2_nmos gate1(.z(z),
 		       .in1(in1),
-		       .in2(in2),
-		       .in3(in3),
-		       .in4(in4)
+		       .in2(in2)
 		       );
 
 endmodule

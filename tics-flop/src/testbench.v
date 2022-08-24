@@ -4,11 +4,11 @@
 
 // Generic testbench to drive inputs from a file
 //
-// MIOC ASIC testing of mos gate - Edward Diaz 
+// MIOC ASIC testing of mos register - Edward Diaz 
 //
 module testbench ();
    
-   wire z;
+   wire q, qbar;
  
    reg in1,in2,in3,in4;
    reg [3:0] input_data;
@@ -33,10 +33,10 @@ module testbench ();
       end
 
       // Write header
-      $fwrite(file_w, "in1 in2 in3 in4 - z\n");
+      $fwrite(file_w, "in1 in2 in3 in4 - q qbar\n");
 
       // STDOUT as well
-      $display("in1 in2 in3 in4 - z\n");      
+      $display("in1 in2 in3 in4 - q qbar\n");      
 
       // Give a reset value
       //
@@ -55,8 +55,8 @@ module testbench ();
 	    in2 = input_data[2];	    
 	    in3 = input_data[1];
 	    in4 = input_data[0];
-	    $fwrite(file_w, "%b %b %b %b - %b\n",in1,in2,in3,in4,z);
-    	    $display("%b %b %b %b - %b",in1,in2,in3,in4,z); 
+	    $fwrite(file_w, "%b %b %b %b - %b %b\n",in1,in2,in3,in4,q,qbar);
+    	    $display("%b %b %b %b - %b %b",in1,in2,in3,in4,q,qbar); 
 	 end
 	 else begin
 	    $fclose(file_r);
@@ -68,11 +68,22 @@ module testbench ();
    
    // Design
    //
-   mioc_and2_nor_nmos gate1(.z(z),
+   /*mioc_flop_nmos reg1(.q(q),
+		       .qbar(qbar),
 		       .in1(in1),
 		       .in2(in2),
 		       .in3(in3),
 		       .in4(in4)
 		       );
+   */
+   
+   tics_module_name reg1(.out_2(q),
+		       .out_6(qbar),
+		       .in_5(in1),
+		       .in_4(in2),
+		       .in_7(in3),
+		       .in_3(in4)
+		       );
 
+   
 endmodule
