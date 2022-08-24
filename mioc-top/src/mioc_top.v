@@ -119,31 +119,31 @@ module mioc_top(
    wire  CAS2_N        ; //: pin 40 : Active low column address strobe 2
 
 
-   // INPUT WIRES
-   wire  BA15          ; //: pin 3 : Address line 15
-   wire  BA14          ; //: pin 4 : Address line 14
-   wire  BA13          ; //: pin 5 : Address line 13	                
-   wire  N_CVRST       ; //: pin 6 : Active low reset signal “Game Reset”
-   wire  BD0           ; //: pin 7 : Data line 0
-   wire  BD1           ; //: pin 8 : Data line 1
-   wire  BD2           ; //: pin 9 : Data line 2
-   wire  BD3           ; //: pin10 : Data line 3
-   wire  N_BWR         ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by
-                         //:      by MA5,/IORQ, and A10
-   wire  BA6           ; //: pin12 : Address line 6
-   wire  BA7           ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
-   wire  IORQ_N        ; //: pin14 : Active low Z80 IO Request
-   wire  WAIT_N        ; //: pin15 : Active low wait signal, Memory wait state
-   wire  BUSAK_N       ; //: pin16 : Active low bus acknowledge - Z80 Control
-   wire  DMA_N         ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
-   wire  PBRST_N       ; //: pin 25 : Active low ADAM Reset switch for computer mode
-   wire  OS3_N         ; //: pin 31 : Active low OS3 From Master 6801
-   wire  BMREQ_N       ; //: pin 32 : Active low Buffered Memory Request
-   wire  BRD_N         ; //: pin 33 : Active low Buffered Memory Read
-   wire  BRFSH_N       ; //: pin 34 : Active low Buffered Memory Refresh
-   wire  BM1_N         ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
-   wire  B_PHI         ; //: pin 36 : Z80 Clock
-
+   // POST IO PAD WIRES (pi = post pad internal)
+   //
+   wire  pi_BA15          ; //: pin 3 : Address line 15
+   wire  pi_BA14          ; //: pin 4 : Address line 14
+   wire  pi_BA13          ; //: pin 5 : Address line 13
+   wire  pi_N_CVRST       ; //: pin 6 : Active low reset signal “Game Reset”
+   wire  pi_BD0           ; //: pin 7 : Data line 0
+   wire  pi_BD1           ; //: pin 8 : Data line 1
+   wire  pi_BD2           ; //: pin 9 : Data line 2
+   wire  pi_BD3           ; //: pin10 : Data line 3
+   wire  pi_N_BWR         ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
+   wire  pi_BA6           ; //: pin12 : Address line 6
+   wire  pi_BA7           ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   wire  pi_IORQ_N        ; //: pin14 : Active low Z80 IO Request
+   wire  pi_WAIT_N        ; //: pin15 : Active low wait signal, Memory wait state
+   wire  pi_BUSAK_N       ; //: pin16 : Active low bus acknowledge - Z80 Control
+   wire  pi_DMA_N         ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   wire  pi_PBRST_N       ; //: pin 25 : Active low ADAM Reset switch for computer mode
+   wire  pi_OS3_N         ; //: pin 31 : Active low OS3 From Master 6801
+   wire  pi_BMREQ_N       ; //: pin 32 : Active low Buffered Memory Request
+   wire  pi_BRD_N         ; //: pin 33 : Active low Buffered Memory Read
+   wire  pi_BRFSH_N       ; //: pin 34 : Active low Buffered Memory Refresh
+   wire  pi_BM1_N         ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
+   wire  pi_B_PHI         ; //: pin 36 : Z80 Clock
+   
    // BLOCK NAMES ( tmp here for reference of module names )
    //    
    //.././mioc-nor3/src/mioc_nor3_nmos.v
@@ -167,21 +167,45 @@ module mioc_top(
    mioc_flop_nmos u1 (.q(w_u1q),
 		      .qbar(w_u1qb),
 
-		      .in1(PBRST_N),    // posedge reset	     
+		      .in1(pi_PBRST_N),    // posedge reset	     
 		      .in2(w_u39z),     // negedge reset (???)   
-		      .in3(BD3),        // inverted negedge reset
-		      .in4(BA13)        // posedge set           
+		      .in3(pi_BD3),        // inverted negedge reset
+		      .in4(pi_BA13)        // posedge set           
 		     );
 
-   mioc_flop_nmos u1 (.q((w_u2q),      
-		      .qbar((w_u2q),
+   mioc_flop_nmos u2 (.q(w_u2q),      
+		      .qbar(w_u2q),
 
-		      .in1(PBRST_N),    // posedge reset	     
+		      .in1(pi_PBRST_N),    // posedge reset	     
 		      .in2(w_u39z),	// negedge reset (???)   
-		      .in3(BD2),	// inverted negedge reset
-		      .in4(BA13)	// posedge set           
+		      .in3(pi_BD2),	// inverted negedge reset
+		      .in4(pi_BA13)	// posedge set           
 		     );
-   
 
-			 
+   
+   // IO PAD ASSIGNMENT
+   //
+   assign  pi_BA15     = BA15      ; //: pin 3 : Address line 15
+   assign  pi_BA14     = BA14      ; //: pin 4 : Address line 14
+   assign  pi_BA13     = BA13      ; //: pin 5 : Address line 13
+   assign  pi_N_CVRST  = N_CVRST   ; //: pin 6 : Active low reset signal “Game Reset”
+   assign  pi_BD0      = BD0       ; //: pin 7 : Data line 0
+   assign  pi_BD1      = BD1       ; //: pin 8 : Data line 1
+   assign  pi_BD2      = BD2       ; //: pin 9 : Data line 2
+   assign  pi_BD3      = BD3       ; //: pin10 : Data line 3
+   assign  pi_N_BWR    = N_BWR     ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
+   assign  pi_BA6      = BA6       ; //: pin12 : Address line 6
+   assign  pi_BA7      = BA7       ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   assign  pi_IORQ_N   = IORQ_N    ; //: pin14 : Active low Z80 IO Request
+   assign  pi_WAIT_N   = WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
+   assign  pi_BUSAK_N  = BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
+   assign  pi_DMA_N    = DMA_N     ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   assign  pi_PBRST_N  = PBRST_N   ; //: pin 25 : Active low ADAM Reset switch for computer mode
+   assign  pi_OS3_N    = OS3_N     ; //: pin 31 : Active low OS3 From Master 6801
+   assign  pi_BMREQ_N  = BMREQ_N   ; //: pin 32 : Active low Buffered Memory Request
+   assign  pi_BRD_N    = BRD_N     ; //: pin 33 : Active low Buffered Memory Read
+   assign  pi_BRFSH_N  = BRFSH_N   ; //: pin 34 : Active low Buffered Memory Refresh
+   assign  pi_BM1_N    = BM1_N     ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
+   assign  pi_B_PHI    = B_PHI     ; //: pin 36 : Z80 Clock
+   
 endmodule
