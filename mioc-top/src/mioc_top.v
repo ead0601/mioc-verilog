@@ -144,7 +144,7 @@ module mioc_top(
    wire  BM1_N        ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
    wire  B_PHI        ; //: pin 36 : Z80 Clock
 
-   // BLOCK NAMES
+   // BLOCK NAMES ( tmp here for reference of module names )
    //    
    //.././mioc-nor3/src/mioc_nor3_nmos.v
    //.././mioc-flop/src/mioc_flop_nmos.v
@@ -155,7 +155,12 @@ module mioc_top(
    //.././mioc-nor2/src/mioc_nor2_nmos.v
    //.././mioc-top/src/mioc_top.v	   
 
-   
+   // INTERNAL WIRES
+   //
+   wire  w_u1q, w_u1qb;           // u1 wires (basically outputs from u1)
+
+   wire  w_u36z;                  // u36 wire (output from u36)
+  
    // COMPONENTS
    //
    mioc_flop_nmos u1 (.q(w_u1q),
