@@ -5,6 +5,8 @@
 // This is a mos representation of the original mos layout
 //  configuration that uses an open drain configuration.
 
+`timescale 1ns / 1 ns
+
 // mioc-flop-mos
 //
 module mioc_flop_nmos(
@@ -40,7 +42,7 @@ module mioc_flop_nmos(
    pullup p3 (m2d);
    nmos   m2 (m2d,GND,m5d);
 
-   pullup m3 (m3d);
+   pullup p4 (m3d);
    nmos   m3 (m3d,GND,in2);
 
    pullup p5 (m4d);

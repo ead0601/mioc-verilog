@@ -31,17 +31,17 @@ module mioc_xnor2_nmos(
    nmos   m2 (m1d,GND,in2);
 
    //NOR2
-   pullup p1 (m3d);   
+   pullup p2 (m3d);   
    nmos   m3 (m3d,GND,in1);
    nmos   m4 (m3d,GND,m1d);
 
    //NOR3
-   pullup p1 (m5d);      
+   pullup p3 (m5d);      
    nmos   m5 (m5d,GND,in2);
    nmos   m6 (m5d,GND,m1d);
 
    //NOR4
-   pullup p1 (m7d);      
+   pullup p4 (m7d);      
    nmos   m7 (m7d,GND,m3d);
    nmos   m8 (m7d,GND,m5d);
    

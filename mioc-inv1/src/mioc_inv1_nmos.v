@@ -16,7 +16,6 @@ module mioc_inv1_nmos(
    output z;
 
    input  in1;
-   input  in2;
 
    supply0 GND;
 
