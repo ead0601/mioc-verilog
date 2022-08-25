@@ -17,7 +17,7 @@ MD = /usr/bin/mkdir
 V_SRC = $(shell ls src/*.v 2>/dev/null)
 
 build : clean $(V_SRC) 
-	$(COMP) $(V_SRC) 
+	$(COMP) -v $(V_SRC)
 
 run :   build
 	$(RUN) a.out
