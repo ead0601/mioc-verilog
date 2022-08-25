@@ -51,7 +51,7 @@ module testbench ();
 	 count = $fscanf(file_r, "%b\n", input_data);
 	 #100;
 	 if (!$feof(file_r)) begin
-	    in1 = input_data[0];
+	    in1 <= input_data[0];
 	    $fwrite(file_w, "%b - %b\n",in1,z);
     	    $display("%b - %b",in1,z); 
 	 end

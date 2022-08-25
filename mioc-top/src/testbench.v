@@ -43,18 +43,21 @@ module testbench ();
       in1 <= 0;
       in2 <= 0;
       in3 <= 0;
-      in4 <= 0;  
+      in4 <= 0;
 
+      $display("TESTBENCH  NOT COMPLETED\n");
+      $finish;
+      
       // Drive patterns
       //
       while (1) begin
 	 count = $fscanf(file_r, "%b\n", input_data);
 	 #100;
 	 if (!$feof(file_r)) begin
-	    in1 = input_data[3];
-	    in2 = input_data[2];	    
-	    in3 = input_data[1];
-	    in4 = input_data[0];
+	    in1 <= input_data[3];
+	    in2 <= input_data[2];	    
+	    in3 <= input_data[1];
+	    in4 <= input_data[0];
 	    $fwrite(file_w, "%b %b %b %b - %b %b\n",in1,in2,in3,in4,q,qbar);
     	    $display("%b %b %b %b - %b %b",in1,in2,in3,in4,q,qbar); 
 	 end
