@@ -2,7 +2,7 @@
 #
 1) In this project we will be simulating the MIOC ASIC in verilog.
 2) Each module is a directory, with its own make file and verification env.
-3) The top-level block will be called "mioc_top", but does not currently exist
+3) The top-level block will be called "mioc_top", currently work in progress.
 
 # HISTORY
 #
@@ -13,13 +13,15 @@ from die snapshots that were taken.
 # STATUS
 #
 The soc block mioc-top, which is the toplevel is currently under construction.
-This testbench is not currently functioning. The other soc blocks, use the
+This testbench is not currently functioning. The other soc blocks may be used, use the
 same makefile (located in its respective directory), with similar build
 targets as shown below in, # HOW TO BUILD.
 
 # INSTALL TOOLS
 #
-sudo apt install iverilog gtkwave 
+# This install iverilog and gtkwave for viewing waveforms.
+
+1) sudo apt install iverilog gtkwave 
 
 # GTKWAVE FYI
 #
