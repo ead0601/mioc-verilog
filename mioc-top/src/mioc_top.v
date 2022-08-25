@@ -162,8 +162,26 @@ module mioc_top(
    //
    wire  w_u1q, w_u1qb;           // u1 output wires 
    wire  w_u2q, w_u2qb;           // u2 output wires 
+   wire  w_u3z;
+   wire  w_u4z;
+   wire  w_u5z;
+   wire  w_u6z;
+   wire  w_u7z;
+   wire  w_u8z;   
+   wire  w_u9z;
+   wire  w_u10z;
+   wire  w_u11z;
+   wire  w_u12z;      
+   wire  w_u13z;         
 
-   wire  w_u39z;                  // u39 output wire 
+   wire  w_u18z;
+   wire  w_u20z;
+   wire  w_u24z;      
+   wire  w_u25z;
+   wire  w_u35z;
+   wire  w_u48z;   
+   wire  w_u39z;
+   wire  w_u49z;   
   
    // COMPONENTS
    //
@@ -183,13 +201,81 @@ module mioc_top(
 		      .in2(w_u39z),        // negedge reset (???)   
 		      .in3(pi_BD2),	   // inverted negedge reset
 		      .in4(pi_BA13)	   // posedge set           
-		     );
+	              );
 
+   mioc_nor2_nmos u3 (.z(w_u3z),
+		      .in1(pi_BA13),
+		      .in2(pi_BA14)
+		      );
+
+   mioc_inv1_nmos u4 (.z(w_u4z),
+		      .in1(w_u3z)
+		      );
+
+   mioc_nand2_nmos u5 (.z(w_u5z),
+		       .in1(w_u4z),
+		       .in2(w_u20z)
+		       );
+   
+   mioc_nor2_nmos u6 (.z(w_u6z),
+		      .in1(w_u25z),
+		      .in2(w_u18z)
+		      );
+
+   mioc_inv1_nmos u7 (.z(w_u7z),
+		      .in1(w_u6z)
+		      ); 
+
+   mioc_nand2_nmos u8 (.z(w_u8z),
+		       .in1(w_u24z),
+		       .in2(w_u7z)
+		       );
+   
+   mioc_nand2_nmos u9 (.z(w_u9z),
+		       .in1(w_u24z),
+		       .in2(w_u10z)
+		       );   
+   
+   mioc_inv1_nmos u10 (.z(w_u10z),
+		      .in1(w_u13z)
+		      );
+   
+   mioc_inv1_nmos u11 (.z(w_u11z),
+		      .in1(pi_BA15)
+		      );
+
+   mioc_nor2_nmos u12 (.z(w_u12z),
+		      .in1(w_u48z),
+		      .in2(w_u11z)
+		      );
+
+   mioc_nor2_nmos u13 (.z(w_u13z),
+		      .in1(w_u35z),
+		      .in2(w_u48z)
+		      );
+   
+   mioc_flop_nmos u14 (.q(w_u14q),
+		      .qbar(w_u14qb),
+
+		      .in1(),              // posedge reset	     
+		      .in2(pi_B_PHI),      // negedge reset (???)   
+		      .in3(w_u49z),        // inverted negedge reset
+		      .in4(pi_BRFSH_N)     // posedge set           
+		     );
+      
    
    // WIRE ASSIGNMENTS
    //
+
+   // OUTPUT ASSIGNMENTS
+   //
+   assign CAS2_N       = w_u8z;
+   assign CAS1_N       = w_u9z;			
+   assign AUXROMCS_N   = w_u48z;
+   assign RAS_N        = w_u49z;
    
-   // IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
+   
+   // INPUT IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
    //
    assign  pi_BA15     = BA15      ; //: pin 3 : Address line 15
    assign  pi_BA14     = BA14      ; //: pin 4 : Address line 14
