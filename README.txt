@@ -4,6 +4,19 @@
 2) Each module is a directory, with its own make file and verification env.
 3) The top-level block will be called "mioc_top", but does not currently exist
 
+# HISTORY
+#
+This ASIC is used in the ADAM computer system. It is a custom timing and control
+ASIC. In order to source a replacement part, a CPLD version will be created
+from die snapshots that were taken.
+
+# STATUS
+#
+The soc block mioc-top, which is the toplevel is currently under construction.
+This testbench is not currently functioning. The other soc blocks, use the
+same makefile (located in its respective directory), with similar build
+targets as shown below in, # HOW TO BUILD.
+
 # INSTALL TOOLS
 #
 sudo apt install iverilog gtkwave 
@@ -27,4 +40,3 @@ make waves    # clean, build, run also executed
 make compare  # compare DATA_OUT to DATA_GOLD
 make cpld     # compile the cpld (not mos) version of MIOC
 make bitpat   # create CPLD bit pattern to upload
-
