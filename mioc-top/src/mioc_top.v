@@ -176,16 +176,24 @@ module mioc_top(
    wire  w_u11z;
    wire  w_u12z;      
    wire  w_u13z;
-   wire  w_u14q, w_u14qb;               
-
+   wire  w_u14q, w_u14qb;
+   wire  w_u17q, w_u17qb;                  
    wire  w_u18z;
+   wire  w_u19z;   
    wire  w_u20z;
+   wire  w_u21z;
+   wire  w_u22z;      
+   
    wire  w_u23z;   
    wire  w_u24z;      
    wire  w_u25z;
+   wire  w_u26z;   
+   wire  w_u31z;   
    wire  w_u35z;
+   wire  w_u38q, w_u38qb;      
    wire  w_u39z;   
    wire  w_u42z;
+   wire  w_u44z;   
    wire  w_u48z;      
    wire  w_u49z;
    wire  w_u50z;   
@@ -280,13 +288,51 @@ module mioc_top(
 		      .in2(pi_B_PHI),      // negedge reset (???)   
 		      .in3(w_u49z),        // inverted negedge reset
 		      .in4(pi_BRFSH_N)     // posedge set           
-		     );
+		     );   
       
 
    // ################################### ROW 2 #############################
    //
-   
 
+   mioc_flop_rtl  u17 (.q(w_u17q),
+		       .qbar(w_u17qb),
+		       
+		       .in1(pi_PBRST_N),   // posedge reset	     
+		       .in2(w_u39z),       // negedge reset (???)   
+		       .in3(pi_BD0),       // inverted negedge reset
+		       .in4(pi_BA13)       // posedge set           
+		     );
+
+   mioc_nor3_nmos u18 (.z(w_u18z),
+		      .in1(w_u38qb),
+		      .in2(w_u17q),
+		      .in3(w_u19z)
+		      );
+
+   mioc_inv1_nmos u19 (.z(w_u19z),
+		      .in1(w_u31z)
+		      );
+
+   mioc_nor3_nmos u20 (.z(w_u20z),
+		      .in1(w_u38qb),
+		      .in2(w_u17qb),
+		      .in3(w_u19z)
+		      );
+
+   mioc_inv1_nmos u21 (.z(w_u21z),
+		      .in1(w_u26z)
+		      );
+
+   mioc_nand2_nmos u22 (.z(w_u22z),
+		       .in1(w_u3z),
+		       .in2(w_u20z)
+		       );      
+
+   mioc_xnor2_nmos u23 (.z(w_u23z),
+                        .in1(pi_BA7),
+                        .in2(w_u44z)
+			);
+   
 
    
    // WIRE ASSIGNMENTS
