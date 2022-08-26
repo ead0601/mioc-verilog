@@ -198,25 +198,41 @@ module mioc_top(
    wire  w_u34z;                  
    wire  w_u35z;
    
-   wire  w_u38q, w_u38qb;      
+   wire  w_u37z;   
+   wire  w_u38q, w_u38qb;  
    wire  w_u39z;
+   wire  w_u40z;
    wire  w_u41z;   
    wire  w_u42z;
-   wire  w_u44z;   
-   wire  w_u48z;      
-   wire  w_u49z;
-   wire  w_u50z;   
+   wire  w_u43q, w_u43qb;     
+   wire  w_u44z;
+   wire  w_u45q, w_u45qb;        
+   wire  w_u46z;
+   wire  w_u47z;
+   wire  w_u48z;
+   wire  w_u49z;            
+   wire  w_u50z;
+
+
+   
+   wire  w_u52z;      
    wire  w_u53z;
+   wire  w_u54q, w_u54qb;         
+   wire  w_u55z;
    wire  w_u56z;
+   wire  w_u57q, w_u57qb;      
    wire  w_u60q, w_u60qb;   
    wire  w_u63z;
    wire  w_u75z;   
    wire  w_u76z;
+   wire  w_u77q, w_u77qb;      
+   wire  w_u78z;         
    wire  w_u79z;      
    wire  w_u86z;
    wire  w_u88z;
    wire  w_u89z;
-   wire  w_u94z;         
+   wire  w_u91z;
+   wire  w_u94z;            
    
   
    // COMPONENTS
@@ -403,14 +419,95 @@ module mioc_top(
    mioc_inv1_nmos u35 (.z(w_u35z),
 		      .in1(w_u34z)
 		      );
-
+   
    
    // ################################### ROW 3 #############################
    //
+   mioc_nand2_nmos u37 (.z(w_u37z),
+		       .in1(pi_WAIT_N),
+		       .in2(pi_IORQ_N)
+		       );
+
+   mioc_flop_rtl  u38 (.q(w_u38q),
+		       .qbar(w_u38qb),
+		       
+		       .in1(pi_PBRST_N),   // posedge reset	     
+		       .in2(w_u39z),       // negedge reset (???)   
+		       .in3(pi_BD1),       // inverted negedge reset
+		       .in4(pi_BA13)       // posedge set           
+		     );
+   
+   mioc_inv1_nmos u39 (.z(w_u39z),
+		      .in1(w_u52z)
+		      );
 
 
+   mioc_inv1_nmos u40 (.z(w_u40z),
+		      .in1(w_u55z)
+		      );
+
+   mioc_nor3_nmos u41 (.z(w_u41z),
+		      .in1(w_u38q),
+		      .in2(w_u17qb),
+		      .in3(w_u19z)
+		      );
+   
+   mioc_nand2_nmos u42 (.z(w_u42z),
+		       .in1(w_u21z),
+		       .in2(w_u22z)
+		       );
+
+   mioc_flop_rtl  u43 (.q(w_u43q),
+		       .qbar(w_u43qb),
+		       
+		       .in1(w_u91z),        // posedge reset	     
+		       .in2(w_u57qb),       // negedge reset (???)   
+		       .in3(w_u43qb),       // inverted negedge reset
+		       .in4()               // posedge set           
+		     );
+
+   mioc_nor2_nmos u44 (.z(w_u44z),
+		       .in1(w_u60q),
+		       .in2(w_u43qb)		       
+		      );
+
+   mioc_flop_rtl  u45 (.q(w_u45q),
+		       .qbar(w_u45qb),
+		       
+		       .in1(),             // posedge reset	     
+		       .in2(w_u33z),       // negedge reset (???)   
+		       .in3(w_u14q),       // inverted negedge reset
+		       .in4(w_u75z)        // posedge set           
+		     );
+
+   mioc_inv1_nmos u46 (.z(w_u46z),
+		      .in1(w_u47z)
+		      );
+
+   mioc_nor2_nmos u47 (.z(w_u47z),
+		       .in1(w_u54qb),
+		       .in2(pi_B_PHI)		       
+		      );
+
+   mioc_inv1_nmos u48 (.z(w_u48z),
+		      .in1(w_u78z)
+		      );
+
+   mioc_nand2_nmos u49 (.z(w_u49z),
+		       .in1(w_u77q),
+		       .in2(w_u29z)
+		       );
+
+   mioc_inv1_nmos u50 (.z(w_u50z),
+		      .in1(w_u27z)
+		      );
 
    
+   // ################################### ROW 4 #############################
+   //
+
+   
+ 
    
    // WIRE ASSIGNMENTS
    //
@@ -449,7 +546,10 @@ module mioc_top(
    assign  pi_BD3      = BD3       ; //: pin10 : Data line 3
    assign  pi_N_BWR    = N_BWR     ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
    assign  pi_BA6      = BA6       ; //: pin12 : Address line 6
+
    assign  pi_BA7      = BA7       ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   assign  pi_BA7B     = ~BA7      ; //: INVERTED pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+
    assign  pi_IORQ_N   = IORQ_N    ; //: pin14 : Active low Z80 IO Request
    assign  pi_WAIT_N   = WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
    assign  pi_BUSAK_N  = BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
