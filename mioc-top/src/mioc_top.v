@@ -177,28 +177,40 @@ module mioc_top(
    wire  w_u12z;      
    wire  w_u13z;
    wire  w_u14q, w_u14qb;
+   
    wire  w_u17q, w_u17qb;                  
    wire  w_u18z;
    wire  w_u19z;   
    wire  w_u20z;
    wire  w_u21z;
    wire  w_u22z;      
-   
    wire  w_u23z;   
-   wire  w_u24z;      
+   wire  w_u24z;  
    wire  w_u25z;
    wire  w_u26z;   
-   wire  w_u31z;   
+   wire  w_u27z;	 
+   wire  w_u28z;
+   wire  w_u29z;
+   wire  w_u30z;
+   wire  w_u31z;
+   wire  w_u32z;           
+   wire  w_u33z;
+   wire  w_u34z;                  
    wire  w_u35z;
+   
    wire  w_u38q, w_u38qb;      
-   wire  w_u39z;   
+   wire  w_u39z;
+   wire  w_u41z;   
    wire  w_u42z;
    wire  w_u44z;   
    wire  w_u48z;      
    wire  w_u49z;
    wire  w_u50z;   
    wire  w_u53z;
-   wire  w_u63z;   
+   wire  w_u56z;
+   wire  w_u60q, w_u60qb;   
+   wire  w_u63z;
+   wire  w_u75z;   
    wire  w_u76z;
    wire  w_u79z;      
    wire  w_u86z;
@@ -293,7 +305,6 @@ module mioc_top(
 
    // ################################### ROW 2 #############################
    //
-
    mioc_flop_rtl  u17 (.q(w_u17q),
 		       .qbar(w_u17qb),
 		       
@@ -332,8 +343,74 @@ module mioc_top(
                         .in1(pi_BA7),
                         .in2(w_u44z)
 			);
-   
 
+   mioc_inv1_nmos u24 (.z(w_u24z),
+		      .in1(w_u56z)
+		      );
+
+   mioc_nor3_nmos u25 (.z(w_u25z),
+		      .in1(w_u1qb),
+		      .in2(w_u2q),
+		      .in3(w_u28z)
+		      );
+   
+   mioc_nor3_nmos u26 (.z(w_u26z),
+		      .in1(w_u1qb),
+		      .in2(w_u2qb),
+		      .in3(w_u28z)
+		      );
+
+   mioc_nor3_nmos u27 (.z(w_u27z),
+		      .in1(w_u1q),
+		      .in2(w_u2qb),
+		      .in3(w_u28z)
+		      );
+
+   mioc_inv1_nmos u28 (.z(w_u28z),
+		      .in1(w_u12z)
+		      );   
+   
+   mioc_nand2_nmos u29 (.z(w_u29z),
+		       .in1(w_u75z),
+		       .in2(w_u60q)
+		       );      
+
+   mioc_nor3_nmos u30 (.z(w_u30z),
+		      .in1(w_u1q),
+		      .in2(w_u2q),
+		      .in3(w_u28z)
+		      );
+
+   mioc_xnor2_nmos u31 (.z(w_u31z),
+                        .in1(pi_BA15),
+                        .in2(w_u48z)
+			);   
+
+   mioc_inv1_nmos u32 (.z(w_u32z),
+		      .in1(w_u5z)
+		      );   
+
+   mioc_inv1_nmos u33 (.z(w_u33z),
+		      .in1(pi_B_PHI)
+		      );
+
+   mioc_nor3_nmos u34 (.z(w_u34z),
+		      .in1(w_u30z),
+		      .in2(w_u32z),
+		      .in3(w_u41z)
+		      );   
+   
+   mioc_inv1_nmos u35 (.z(w_u35z),
+		      .in1(w_u34z)
+		      );
+
+   
+   // ################################### ROW 3 #############################
+   //
+
+
+
+   
    
    // WIRE ASSIGNMENTS
    //
