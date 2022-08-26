@@ -163,6 +163,8 @@ module mioc_top(
 
    // INTERNAL COMPONENT WIRES
    //
+
+   // row 1
    wire  w_u1q, w_u1qb;           // u1 output wires 
    wire  w_u2q, w_u2qb;           // u2 output wires 
    wire  w_u3z;
@@ -177,7 +179,8 @@ module mioc_top(
    wire  w_u12z;      
    wire  w_u13z;
    wire  w_u14q, w_u14qb;
-   
+
+   // row 2
    wire  w_u17q, w_u17qb;                  
    wire  w_u18z;
    wire  w_u19z;   
@@ -197,7 +200,8 @@ module mioc_top(
    wire  w_u33z;
    wire  w_u34z;                  
    wire  w_u35z;
-   
+
+   // row 3
    wire  w_u37z;   
    wire  w_u38q, w_u38qb;  
    wire  w_u39z;
@@ -213,21 +217,34 @@ module mioc_top(
    wire  w_u49z;            
    wire  w_u50z;
 
-
-   
+   // row 4
    wire  w_u52z;      
    wire  w_u53z;
-   wire  w_u54q, w_u54qb;         
+   wire  w_u54q, w_u54qb;   
    wire  w_u55z;
-   wire  w_u56z;
+   wire  w_u56z;   
    wire  w_u57q, w_u57qb;      
-   wire  w_u60q, w_u60qb;   
-   wire  w_u63z;
+   wire  w_u58z;
+   wire  w_u59z;
+   wire  w_u60q, w_u60qb;         
+   wire  w_u61z;
+   wire  w_u62z;
+   wire  w_u63z;      
+
+   // row 4
+   wire  w_u65z;         
+   wire  w_u66z;
+
+   
+   
+   wire  w_u72z;
+   wire  w_u73z;         
    wire  w_u75z;   
    wire  w_u76z;
    wire  w_u77q, w_u77qb;      
    wire  w_u78z;         
-   wire  w_u79z;      
+   wire  w_u79z;
+   wire  w_u84z;      
    wire  w_u86z;
    wire  w_u88z;
    wire  w_u89z;
@@ -312,7 +329,7 @@ module mioc_top(
    mioc_flop_rtl  u14 (.q(w_u14q),
 		      .qbar(w_u14qb),
 
-		      .in1(),              // posedge reset	     
+		      .in1(1'b0),          // posedge reset	     
 		      .in2(pi_B_PHI),      // negedge reset (???)   
 		      .in3(w_u49z),        // inverted negedge reset
 		      .in4(pi_BRFSH_N)     // posedge set           
@@ -463,7 +480,7 @@ module mioc_top(
 		       .in1(w_u91z),        // posedge reset	     
 		       .in2(w_u57qb),       // negedge reset (???)   
 		       .in3(w_u43qb),       // inverted negedge reset
-		       .in4()               // posedge set           
+		       .in4(1'b0)           // posedge set           
 		     );
 
    mioc_nor2_nmos u44 (.z(w_u44z),
@@ -474,7 +491,7 @@ module mioc_top(
    mioc_flop_rtl  u45 (.q(w_u45q),
 		       .qbar(w_u45qb),
 		       
-		       .in1(),             // posedge reset	     
+		       .in1(1'b0),         // posedge reset	     
 		       .in2(w_u33z),       // negedge reset (???)   
 		       .in3(w_u14q),       // inverted negedge reset
 		       .in4(w_u75z)        // posedge set           
@@ -505,9 +522,85 @@ module mioc_top(
    
    // ################################### ROW 4 #############################
    //
+   mioc_nand2_nmos u52 (.z(w_u52z),
+		       .in1(pi_BA6),
+		       .in2(w_u65z)
+		       );
+   
+   mioc_nor2_nmos u53 (.z(w_u53z),
+		       .in1(pi_BA13),
+		       .in2(pi_PBRST_N)		       
+		      );
 
    
- 
+   mioc_flop_rtl  u54 (.q(w_u54q),
+		       .qbar(w_u54qb),
+		       
+		       .in1(1'b0),         // posedge reset	     
+		       .in2(w_u46z),       // negedge reset (???)   
+		       .in3(w_u37z),       // inverted negedge reset
+		       .in4(w_u86z)        // posedge set           
+		     );
+   
+   mioc_nor3_nmos u55 (.z(w_u55z),
+		      .in1(w_u38q),
+		      .in2(w_u17q),
+		      .in3(w_u19z)
+		      );
+
+   mioc_nand2_nmos u56 (.z(w_u56z),
+		       .in1(w_u72z),
+		       .in2(w_u73z)
+		       );
+   
+   mioc_flop_rtl  u57 (.q(w_u57q),
+		       .qbar(w_u57qb),
+		       
+		       .in1(w_u91z),        // posedge reset	     
+		       .in2(w_u60qb),       // negedge reset (???)   
+		       .in3(pi_BA6),        // inverted negedge reset
+		       .in4(1'b0)           // posedge set           
+		     );
+
+   mioc_nor2_nmos u58 (.z(w_u58z),
+		       .in1(w_u75z),
+		       .in2(w_u40z)		       
+		      );
+
+   mioc_nor2_nmos u59 (.z(w_u59z),
+		       .in1(w_u45q),
+		       .in2(w_u14qb)		       
+		      );
+   
+   
+   mioc_flop_rtl  u60 (.q(w_u60q),
+		       .qbar(w_u60qb),
+		       
+		       .in1(1'b0),        // posedge reset	     
+		       .in2(pi_B_PHI),       // negedge reset (???)   
+		       .in3(w_u62z),        // inverted negedge reset
+		       .in4(w_u91z)           // posedge set           
+		     );
+
+   mioc_nor2_nmos u61 (.z(w_u61z),
+		       .in1(w_u78z),
+		       .in2(w_u77q)		       
+		      );   
+
+  mioc_inv1_nmos u62 (.z(w_u62z),
+		      .in1(w_u84z)
+		      );
+
+  mioc_inv1_nmos u63 (.z(w_u63z),
+		      .in1(w_u61z)
+		      );
+
+   
+   // ################################### ROW 5 #############################
+   //
+   
+
+   
    
    // WIRE ASSIGNMENTS
    //
