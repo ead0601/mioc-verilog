@@ -128,28 +128,29 @@ module mioc_top(
    // IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
    // re-asignment occurs below in the wire assignment section
    //
-   wire  pi_BA15          ; //: pin 3 : Address line 15
-   wire  pi_BA14          ; //: pin 4 : Address line 14
-   wire  pi_BA13          ; //: pin 5 : Address line 13
-   wire  pi_N_CVRST       ; //: pin 6 : Active low reset signal “Game Reset”
-   wire  pi_BD0           ; //: pin 7 : Data line 0
-   wire  pi_BD1           ; //: pin 8 : Data line 1
-   wire  pi_BD2           ; //: pin 9 : Data line 2
-   wire  pi_BD3           ; //: pin10 : Data line 3
-   wire  pi_N_BWR         ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
-   wire  pi_BA6           ; //: pin12 : Address line 6
-   wire  pi_BA7           ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
-   wire  pi_IORQ_N        ; //: pin14 : Active low Z80 IO Request
-   wire  pi_WAIT_N        ; //: pin15 : Active low wait signal, Memory wait state
-   wire  pi_BUSAK_N       ; //: pin16 : Active low bus acknowledge - Z80 Control
-   wire  pi_DMA_N         ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
-   wire  pi_PBRST_N       ; //: pin 25 : Active low ADAM Reset switch for computer mode
-   wire  pi_OS3_N         ; //: pin 31 : Active low OS3 From Master 6801
-   wire  pi_BMREQ_N       ; //: pin 32 : Active low Buffered Memory Request
-   wire  pi_BRD_N         ; //: pin 33 : Active low Buffered Memory Read
-   wire  pi_BRFSH_N       ; //: pin 34 : Active low Buffered Memory Refresh
-   wire  pi_BM1_N         ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
-   wire  pi_B_PHI         ; //: pin 36 : Z80 Clock
+   wire  PIN_IN_3         ; //: pin 3 : Address line 15
+   wire  PIN_IN_4         ; //: pin 4 : Address line 14
+   wire  PIN_IN_5         ; //: pin 5 : Address line 13
+   wire  PIN_IN_6         ; //: pin 6 : Active low reset signal “Game Reset”
+   wire  PIN_IN_7         ; //: pin 7 : Data line 0
+   wire  PIN_IN_8         ; //: pin 8 : Data line 1
+   wire  PIN_IN_9         ; //: pin 9 : Data line 2
+   wire  PIN_IN_10        ; //: pin10 : Data line 3
+   wire  PIN_IN_11        ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
+   wire  PIN_IN_12        ; //: pin12 : Address line 6
+   wire  PIN_IN_13        ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   wire  PIN_IN_13B       ; //: pin13 : INVERTED Address line 7 (according to earlier docs, gated by /ADDRBUFEN)   
+   wire  PIN_IN_14        ; //: pin14 : Active low Z80 IO Request
+   wire  PIN_IN_15        ; //: pin15 : Active low wait signal, Memory wait state
+   wire  PIN_IN_16        ; //: pin16 : Active low bus acknowledge - Z80 Control
+   wire  PIN_IN_17        ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   wire  PIN_IN_25        ; //: pin 25 : Active low ADAM Reset switch for computer mode
+   wire  PIN_IN_31        ; //: pin 31 : Active low OS3 From Master 6801
+   wire  PIN_IN_32        ; //: pin 32 : Active low Buffered Memory Request
+   wire  PIN_IN_33        ; //: pin 33 : Active low Buffered Memory Read
+   wire  PIN_IN_34        ; //: pin 34 : Active low Buffered Memory Refresh
+   wire  PIN_IN_35        ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
+   wire  PIN_IN_36        ; //: pin 36 : Z80 Clock
    
    // SOC BLOCK NAMES ( temp here for reference of module names )
    //    
@@ -273,24 +274,24 @@ module mioc_top(
    mioc_flop_rtl  u1 (.q(w_u1q),
 		      .qbar(w_u1qb),
 
-		      .in1(pi_PBRST_N),    // posedge reset	     
-		      .in2(w_u39z),        // negedge reset (???)   
-		      .in3(pi_BD3),        // inverted negedge reset
-		      .in4(pi_BA13)        // posedge set           
+		      .in1(PIN_IN_25),      // posedge reset	     
+		      .in2(w_u39z),         // negedge reset (???)   
+		      .in3(PIN_IN_10),      // inverted negedge reset
+		      .in4(PIN_IN_6)        // posedge set           
 		     );
 
    mioc_flop_rtl  u2 (.q(w_u2q),      
 		      .qbar(w_u2q),
 
-		      .in1(pi_PBRST_N),    // posedge reset	     
+		      .in1(PIN_IN_25),     // posedge reset	     
 		      .in2(w_u39z),        // negedge reset (???)   
-		      .in3(pi_BD2),	   // inverted negedge reset
-		      .in4(pi_BA13)	   // posedge set           
+		      .in3(PIN_IN_9),	   // inverted negedge reset
+		      .in4(PIN_IN_6)	   // posedge set           
 	              );
 
    mioc_nor2_nmos u3 (.z(w_u3z),
-		      .in1(pi_BA13),
-		      .in2(pi_BA14)
+		      .in1(PIN_IN_5),
+		      .in2(PIN_IN_4)
 		      );
 
    mioc_inv1_nmos u4 (.z(w_u4z),
@@ -326,7 +327,7 @@ module mioc_top(
 		      );
    
    mioc_inv1_nmos u11 (.z(w_u11z),
-		      .in1(pi_BA15)
+		      .in1(PIN_IN_3)
 		      );
 
    mioc_nor2_nmos u12 (.z(w_u12z),
@@ -343,9 +344,9 @@ module mioc_top(
 		      .qbar(w_u14qb),
 
 		      .in1(1'b0),          // posedge reset	     
-		      .in2(pi_B_PHI),      // negedge reset (???)   
+		      .in2(PIN_IN_36),     // negedge reset (???)   
 		      .in3(w_u49z),        // inverted negedge reset
-		      .in4(pi_BRFSH_N)     // posedge set           
+		      .in4(PIN_IN_34)      // posedge set           
 		     );   
       
 
@@ -354,10 +355,10 @@ module mioc_top(
    mioc_flop_rtl  u17 (.q(w_u17q),
 		       .qbar(w_u17qb),
 		       
-		       .in1(pi_PBRST_N),   // posedge reset	     
-		       .in2(w_u39z),       // negedge reset (???)   
-		       .in3(pi_BD0),       // inverted negedge reset
-		       .in4(pi_BA13)       // posedge set           
+		       .in1(PIN_IN_25),     // posedge reset	     
+		       .in2(w_u39z),        // negedge reset (???)   
+		       .in3(PIN_IN_7),      // inverted negedge reset
+		       .in4(PIN_IN_6)       // posedge set           
 		     );
 
    mioc_nor3_nmos u18 (.z(w_u18z),
@@ -386,7 +387,7 @@ module mioc_top(
 		       );      
 
    mioc_xnor2_nmos u23 (.z(w_u23z),
-                        .in1(pi_BA7),
+                        .in1(PIN_IN_13),    // ############# PIN 13 ############
                         .in2(w_u44z)
 			);
 
@@ -428,7 +429,7 @@ module mioc_top(
 		      );
 
    mioc_xnor2_nmos u31 (.z(w_u31z),
-                        .in1(pi_BA15),
+                        .in1(PIN_IN_3),
                         .in2(w_u48z)
 			);   
 
@@ -437,7 +438,7 @@ module mioc_top(
 		      );   
 
    mioc_inv1_nmos u33 (.z(w_u33z),
-		      .in1(pi_B_PHI)
+		      .in1(PIN_IN_36)
 		      );
 
    mioc_nor3_nmos u34 (.z(w_u34z),
@@ -454,17 +455,17 @@ module mioc_top(
    // ################################### ROW 3 #############################
    //
    mioc_nand2_nmos u37 (.z(w_u37z),
-		       .in1(pi_WAIT_N),
-		       .in2(pi_IORQ_N)
+		       .in1(PIN_IN_15),
+		       .in2(PIN_IN_14)
 		       );
 
    mioc_flop_rtl  u38 (.q(w_u38q),
 		       .qbar(w_u38qb),
 		       
-		       .in1(pi_PBRST_N),   // posedge reset	     
-		       .in2(w_u39z),       // negedge reset (???)   
-		       .in3(pi_BD1),       // inverted negedge reset
-		       .in4(pi_BA13)       // posedge set           
+		       .in1(PIN_IN_25),     // posedge reset	     
+		       .in2(w_u39z),        // negedge reset (???)   
+		       .in3(PIN_IN_8),      // inverted negedge reset
+		       .in4(PIN_IN_6)       // posedge set           
 		     );
    
    mioc_inv1_nmos u39 (.z(w_u39z),
@@ -516,7 +517,7 @@ module mioc_top(
 
    mioc_nor2_nmos u47 (.z(w_u47z),
 		       .in1(w_u54qb),
-		       .in2(pi_B_PHI)		       
+		       .in2(PIN_IN_36)		       
 		      );
 
    mioc_inv1_nmos u48 (.z(w_u48z),
@@ -536,13 +537,13 @@ module mioc_top(
    // ################################### ROW 4 #############################
    //
    mioc_nand2_nmos u52 (.z(w_u52z),
-		       .in1(pi_BA6),
+		       .in1(PIN_IN_12),
 		       .in2(w_u65z)
 		       );
    
    mioc_nor2_nmos u53 (.z(w_u53z),
-		       .in1(pi_BA13),
-		       .in2(pi_PBRST_N)		       
+		       .in1(PIN_IN_6),
+		       .in2(PIN_IN_25)		       
 		      );
 
    
@@ -571,7 +572,7 @@ module mioc_top(
 		       
 		       .in1(w_u91z),        // posedge reset	     
 		       .in2(w_u60qb),       // negedge reset (???)   
-		       .in3(pi_BA6),        // inverted negedge reset
+		       .in3(PIN_IN_12),     // inverted negedge reset
 		       .in4(1'b0)           // posedge set           
 		     );
 
@@ -589,7 +590,7 @@ module mioc_top(
 		       .qbar(w_u60qb),
 		       
 		       .in1(1'b0),           // posedge reset	     
-		       .in2(pi_B_PHI),       // negedge reset (???)   
+		       .in2(PIN_IN_36),       // negedge reset (???)   
 		       .in3(w_u62z),         // inverted negedge reset
 		       .in4(w_u91z)          // posedge set           
 		     );
@@ -611,17 +612,17 @@ module mioc_top(
    // ################################### ROW 5 #############################
    //
    mioc_nor2_nmos u65 (.z(w_u65z),
-		       .in1(pi_N_BWR),
+		       .in1(PIN_IN_11),
 		       .in2(w_u67z)		       
 		      );
 
    mioc_inv1_nmos u66 (.z(w_u66z),
-		      .in1(pi_BA6)
+		      .in1(PIN_IN_12)
 		      );   
 
    mioc_nand2_nmos u67 (.z(w_u67z),
-		       .in1(pi_BA7),   // ############# PIN 13 ############
-		       .in2(pi_IORQ_N)
+		       .in1(PIN_IN_13B),   // ############# PIN 13 ############
+		       .in2(PIN_IN_14)
 		       );
 
    mioc_nor2_nmos u69 (.z(w_u69z),
@@ -639,7 +640,7 @@ module mioc_top(
 		      );      
    
    mioc_nor2_nmos u72 (.z(w_u72z),
-		       .in1(pi_N_BWR),
+		       .in1(PIN_IN_11),
 		       .in2(w_u45q)		       
 		      );
 
@@ -672,7 +673,7 @@ module mioc_top(
 		     );
 
    mioc_nor2_nmos u78 (.z(w_u78z),
-		       .in1(pi_BUSAK_N),
+		       .in1(PIN_IN_16),
 		       .in2(w_u69z)		       
 		      );
 
@@ -682,11 +683,11 @@ module mioc_top(
 		      );
    
    mioc_inv1_nmos u80 (.z(w_u80z),
-		      .in1(pi_B_PHI)
+		      .in1(PIN_IN_36)
 		      );      
    
    mioc_nand4_nor2_nmos  u81 (.z(w_u81z),		       
-			       .in1(pi_BMREQ_N),           
+			       .in1(PIN_IN_32),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
 			       .in4(w_82z)          
@@ -697,7 +698,7 @@ module mioc_top(
 		       );      
 
    mioc_nand4_nor2_nmos  u83 (.z(w_u83z),		       
-			       .in1(pi_BRD_N),           
+			       .in1(PIN_IN_33),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
 			       .in4(w_82z)          
@@ -705,14 +706,34 @@ module mioc_top(
 
    mioc_nor2_nmos u84 (.z(w_u84z),
 		       .in1(w_u77q),
-		       .in2(pi_BM1_N)		       
+		       .in2(PIN_IN_35)		       
 		      );
 
    
    // ################################### ROW 6 #############################
    //
 
+   mioc_inv1_nmos u85 (.z(w_u85z),
+		       .in1(w_u87z)
+		       );      
 
+   mioc_inv1_nmos u86 (.z(w_u86z),
+		       .in1(PIN_IN_17)
+		       );      
+
+   mioc_nand2_nmos u87 (.z(w_u87z),
+		       .in1(w_u66z),
+		       .in2(w_u65z)		       
+		      );
+
+   mioc_flop_rtl u88 (.q(w_u88q),      
+		      .qbar(w_u88q),
+
+		      .in1(),      // posedge reset	     
+		      .in2(),      // negedge reset (???)   
+		      .in3(),	   // inverted negedge reset
+		      .in4()	   // posedge set           
+	              );
 
    
    
@@ -744,30 +765,31 @@ module mioc_top(
    //   
    // IOPADS have two outputs each: BUF = INV + INV , so either the buffered or inverted signal is used.
    //
-   assign  pi_BA15     = BA15      ; //: pin 3 : Address line 15
-   assign  pi_BA14     = BA14      ; //: pin 4 : Address line 14
-   assign  pi_BA13     = BA13      ; //: pin 5 : Address line 13
-   assign  pi_N_CVRST  = N_CVRST   ; //: pin 6 : Active low reset signal “Game Reset”
-   assign  pi_BD0      = BD0       ; //: pin 7 : Data line 0
-   assign  pi_BD1      = BD1       ; //: pin 8 : Data line 1
-   assign  pi_BD2      = BD2       ; //: pin 9 : Data line 2
-   assign  pi_BD3      = BD3       ; //: pin10 : Data line 3
-   assign  pi_N_BWR    = N_BWR     ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
-   assign  pi_BA6      = BA6       ; //: pin12 : Address line 6
+   assign  PIN_IN_3    = BA15      ; //: pin 3 : Address line 15
+   assign  PIN_IN_4    = BA14      ; //: pin 4 : Address line 14
+   assign  PIN_IN_5    = BA13      ; //: pin 5 : Address line 13
+   assign  PIN_IN_6    = N_CVRST   ; //: pin 6 : Active low reset signal “Game Reset”
+   assign  PIN_IN_7    = BD0       ; //: pin 7 : Data line 0
+   assign  PIN_IN_8    = BD1       ; //: pin 8 : Data line 1
+   assign  PIN_IN_9    = BD2       ; //: pin 9 : Data line 2
+   assign  PIN_IN_10   = BD3       ; //: pin10 : Data line 3
+   assign  PIN_IN_11   = N_BWR     ; //: pin11 : Active low write signal Buffered Write (according to earlier docs, gated by MA5,/IORQ, and A10
+   assign  PIN_IN_12   = BA6       ; //: pin12 : Address line 6
 
-   assign  pi_BA7      = BA7       ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
-   assign  pi_BA7B     = ~BA7      ; //: INVERTED pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   assign  PIN_IN_13   = BA7       ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
+   assign  PIN_IN_13B  = ~BA7      ; //: INVERTED pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
 
-   assign  pi_IORQ_N   = IORQ_N    ; //: pin14 : Active low Z80 IO Request
-   assign  pi_WAIT_N   = WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
-   assign  pi_BUSAK_N  = BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
-   assign  pi_DMA_N    = DMA_N     ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
-   assign  pi_PBRST_N  = PBRST_N   ; //: pin 25 : Active low ADAM Reset switch for computer mode
-   assign  pi_OS3_N    = OS3_N     ; //: pin 31 : Active low OS3 From Master 6801
-   assign  pi_BMREQ_N  = BMREQ_N   ; //: pin 32 : Active low Buffered Memory Request
-   assign  pi_BRD_N    = BRD_N     ; //: pin 33 : Active low Buffered Memory Read
-   assign  pi_BRFSH_N  = BRFSH_N   ; //: pin 34 : Active low Buffered Memory Refresh
-   assign  pi_BM1_N    = BM1_N     ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
-   assign  pi_B_PHI    = B_PHI     ; //: pin 36 : Z80 Clock
+   assign  PIN_IN_14   = IORQ_N    ; //: pin14 : Active low Z80 IO Request
+   assign  PIN_IN_15   = WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
+   assign  PIN_IN_16   = BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
+   assign  PIN_IN_17   = DMA_N     ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   assign  PIN_IN_25   = PBRST_N   ; //: pin 25 : Active low ADAM Reset switch for computer mode
+
+   assign  PIN_IN_31   = OS3_N     ; //: pin 31 : Active low OS3 From Master 6801
+   assign  PIN_IN_32   = BMREQ_N   ; //: pin 32 : Active low Buffered Memory Request
+   assign  PIN_IN_33   = BRD_N     ; //: pin 33 : Active low Buffered Memory Read
+   assign  PIN_IN_34   = BRFSH_N   ; //: pin 34 : Active low Buffered Memory Refresh
+   assign  PIN_IN_35   = BM1_N     ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
+   assign  PIN_IN_36   = B_PHI     ; //: pin 36 : Z80 Clock
    
 endmodule
