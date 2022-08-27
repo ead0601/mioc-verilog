@@ -253,7 +253,6 @@ module mioc_top(
    wire  w_u84z;      
 
    // row 5
-   wire  w_u84z;      
    wire  w_u85z;
    wire  w_u86z;
    wire  w_u87z;
@@ -638,7 +637,7 @@ module mioc_top(
    mioc_inv1_nmos u71 (.z(w_u71z),
 		      .in1(w_u83z)
 		      );      
-w   
+   
    mioc_nor2_nmos u72 (.z(w_u72z),
 		       .in1(pi_N_BWR),
 		       .in2(w_u45q)		       
@@ -686,6 +685,35 @@ w
 		      .in1(pi_B_PHI)
 		      );      
    
+   mioc_nand4_nor2_nmos  u81 (.z(w_u81z),		       
+			       .in1(pi_BMREQ_N),           
+			       .in2(w_u78z),         
+			       .in3(w_u93q),         
+			       .in4(w_82z)          
+			       );
+
+   mioc_inv1_nmos u82 (.z(w_u82z),
+		       .in1(w_u78z)
+		       );      
+
+   mioc_nand4_nor2_nmos  u83 (.z(w_u83z),		       
+			       .in1(pi_BRD_N),           
+			       .in2(w_u78z),         
+			       .in3(w_u93q),         
+			       .in4(w_82z)          
+			       );
+
+   mioc_nor2_nmos u84 (.z(w_u84z),
+		       .in1(w_u77q),
+		       .in2(pi_BM1_N)		       
+		      );
+
+   
+   // ################################### ROW 5 #############################
+   //
+
+
+
    
    
    
