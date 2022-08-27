@@ -156,7 +156,7 @@ module mioc_top(
    // mioc_nor3_nmos 
    // mioc_flop_rtl     (q is port on the right)
    // mioc_xnor2_nmos 
-   // mioc_and2_nor_nmos 
+   // mioc_nand4_nor2_nmos 
    // mioc_nand2_nmos 
    // mioc_inv1_nmos 
    // mioc_nor2_nmos 
@@ -234,24 +234,38 @@ module mioc_top(
    // row 4
    wire  w_u65z;         
    wire  w_u66z;
-
-   
-   
-   wire  w_u72z;
+   wire  w_u67z;
+   wire  w_u69z;
+   wire  w_u70z;
+   wire  w_u71z;         
+   wire  w_u72z;         
    wire  w_u73z;         
-   wire  w_u75z;   
-   wire  w_u76z;
+   wire  w_u74z;         
+   wire  w_u75z;         
+   wire  w_u76z;            
    wire  w_u77q, w_u77qb;      
    wire  w_u78z;         
    wire  w_u79z;
+   wire  w_u80z;
+   wire  w_u81z;   
+   wire  w_u82z;   
+   wire  w_u83z;   
    wire  w_u84z;      
+
+   // row 5
+   wire  w_u84z;      
+   wire  w_u85z;
    wire  w_u86z;
-   wire  w_u88z;
+   wire  w_u87z;
+   wire  w_u88q, w_u88qb;         
    wire  w_u89z;
+   wire  w_u90q, w_u90qb;            
    wire  w_u91z;
+   wire  w_u92q, w_u92qb;            
+   wire  w_u93q, w_u93qb;               
    wire  w_u94z;            
    
-  
+ 
    // COMPONENTS
    //
 
@@ -572,14 +586,13 @@ module mioc_top(
 		       .in2(w_u14qb)		       
 		      );
    
-   
    mioc_flop_rtl  u60 (.q(w_u60q),
 		       .qbar(w_u60qb),
 		       
-		       .in1(1'b0),        // posedge reset	     
+		       .in1(1'b0),           // posedge reset	     
 		       .in2(pi_B_PHI),       // negedge reset (???)   
-		       .in3(w_u62z),        // inverted negedge reset
-		       .in4(w_u91z)           // posedge set           
+		       .in3(w_u62z),         // inverted negedge reset
+		       .in4(w_u91z)          // posedge set           
 		     );
 
    mioc_nor2_nmos u61 (.z(w_u61z),
@@ -598,8 +611,82 @@ module mioc_top(
    
    // ################################### ROW 5 #############################
    //
+   mioc_nor2_nmos u65 (.z(w_u65z),
+		       .in1(pi_N_BWR),
+		       .in2(w_u67z)		       
+		      );
+
+   mioc_inv1_nmos u66 (.z(w_u66z),
+		      .in1(pi_BA6)
+		      );   
+
+   mioc_nand2_nmos u67 (.z(w_u67z),
+		       .in1(pi_BA7),   // ############# PIN 13 ############
+		       .in2(pi_IORQ_N)
+		       );
+
+   mioc_nor2_nmos u69 (.z(w_u69z),
+		       .in1(w_u86z),
+		       .in2(w_u54q)		       
+		      );
+
+   mioc_nand2_nmos u70 (.z(w_u70z),
+		       .in1(w_u67z), 
+		       .in2(w_u89z)
+		       );
+
+   mioc_inv1_nmos u71 (.z(w_u71z),
+		      .in1(w_u83z)
+		      );      
+w   
+   mioc_nor2_nmos u72 (.z(w_u72z),
+		       .in1(pi_N_BWR),
+		       .in2(w_u45q)		       
+		      );
+
+   mioc_nor2_nmos u73 (.z(w_u73z),
+		       .in1(w_u71z),
+		       .in2(w_u45q)		       
+		      );
+
+   mioc_nor2_nmos u74 (.z(w_u74z),
+		       .in1(w_u75z),
+		       .in2(w_u42z)		       
+		      );
+   
+   mioc_inv1_nmos u75 (.z(w_u75z),
+		      .in1(w_81z)
+		      );      
+
+   mioc_inv1_nmos u76 (.z(w_u76z),
+		      .in1(w_u58z)
+		      );      
    
 
+   mioc_flop_rtl  u77 (.q(w_u77q),
+		       .qbar(w_u77qb),
+		       
+		       .in1(1'b0),           // posedge reset	     
+		       .in2(w_u33z),         // negedge reset (???)   
+		       .in3(w_u45q),         // inverted negedge reset
+		       .in4(w_u91z)          // posedge set           
+		     );
+
+   mioc_nor2_nmos u78 (.z(w_u78z),
+		       .in1(pi_BUSAK_N),
+		       .in2(w_u69z)		       
+		      );
+
+   mioc_nand2_nmos u79 (.z(w_u79z),
+		       .in1(w_u70z),
+		       .in2(w_u78z)		       
+		      );
+   
+   mioc_inv1_nmos u80 (.z(w_u80z),
+		      .in1(pi_B_PHI)
+		      );      
+   
+   
    
    
    // WIRE ASSIGNMENTS
@@ -609,7 +696,7 @@ module mioc_top(
    //
    assign RA7           = w_u23z;   //: pin 2 : (goes to U9 , RAM Address 7.This is the multiplexed RAM address MSB.)	       
    assign BUSRQ_N       = w_u86z;   //: pin18 : Active low bus request
-   assign SPINDIS_N     = w_u88z;   //: pin19 : Active low Controller Spinner Interrupt Disable
+   assign SPINDIS_N     = w_u88qb;  //: pin19 : Active low Controller Spinner Interrupt Disable
    assign NETRST_N      = w_u89z;   //: pin20 : Active low - Reset for AdamNET
    assign AUXDECODE1_N  = w_u42z;   //: pin 22 : Active low - Disables the onboard mem decode on CV board?
    assign RST_N         = w_u53z;   //: pin 23 : Active low reset - System Reset circuitry

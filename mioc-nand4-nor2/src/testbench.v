@@ -68,7 +68,7 @@ module testbench ();
    
    // Design
    //
-   mioc_and2_nor_nmos gate1(.z(z),
+   mioc_nand4_nor2_nmos gate1(.z(z),
 		       .in1(in1),
 		       .in2(in2),
 		       .in3(in3),
