@@ -37,8 +37,13 @@ make build    # clean also executed
 make run      # clean, build also executed
 make waves    # clean, build, run also executed
 
-#TBD (to be done)
+# HOW TO RUN TOP (in development)
 #
-make compare  # compare DATA_OUT to DATA_GOLD
-make cpld     # compile the cpld (not mos) version of MIOC
-make bitpat   # create CPLD bit pattern to upload
+#  (make build is not directly callable)
+
+cd mioc-top
+ls -la tests
+
+make run test="test-001-system-reset"
+ or
+make waves test="test-001-system-reset" 
