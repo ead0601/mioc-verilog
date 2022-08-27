@@ -729,12 +729,51 @@ module mioc_top(
    mioc_flop_rtl u88 (.q(w_u88q),      
 		      .qbar(w_u88q),
 
-		      .in1(),      // posedge reset	     
-		      .in2(),      // negedge reset (???)   
-		      .in3(),	   // inverted negedge reset
-		      .in4()	   // posedge set           
+		      .in1(w_u91z),      // posedge reset	     
+		      .in2(w_u85z),      // negedge reset (???)   
+		      .in3(PIN_IN_8),	 // inverted negedge reset
+		      .in4(1'b0)	 // posedge set           
 	              );
 
+   mioc_inv1_nmos u89 (.z(w_u89z),
+		       .in1(w_u75z)
+		       );         
+
+
+   mioc_flop_rtl u90 (.q(w_u90q),      
+		      .qbar(w_u90q),
+
+		      .in1(w_u91z),      // posedge reset	     
+		      .in2(w_u85z),      // negedge reset (???)   
+		      .in3(PIN_IN_7),	 // inverted negedge reset
+		      .in4(1'b0)	 // posedge set           
+	              );
+
+   mioc_inv1_nmos u91 (.z(w_u91z),
+		       .in1(w_u53z)
+		       );         
+
+   mioc_flop_rtl u92 (.q(w_u92q),      
+		      .qbar(w_u92q),
+
+		      .in1(w_u91z),      // posedge reset	     
+		      .in2(PIN_IN_31),   // negedge reset (???)   
+		      .in3(1'b0),	 // inverted negedge reset
+		      .in4(w_u59z)	 // posedge set           
+	              );   
+
+   mioc_flop_rtl u93 (.q(w_u93q),      
+		      .qbar(w_u93q),
+
+		      .in1(w_u91z),      // posedge reset	     
+		      .in2(w_u80z),      // negedge reset (???)   
+		      .in3(w_u92q),	 // inverted negedge reset
+		      .in4(1'b0)	 // posedge set           
+	              );
+
+   mioc_inv1_nmos u94 (.z(w_u94z),
+		       .in1(PIN_IN_25)
+		       );  
    
    
    
