@@ -26,7 +26,7 @@ module testbench ();
    reg    BUSAK_N      ; //: pin16 : Active low bus acknowledge - Z80 Control					    
    reg    DMA_N        ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
    reg    PBRST_N      ; //: pin 25 : Active low ADAM Reset switch for computer mode					    
-   reg    OS3_N        ; //: pin 31 : Active low OS3 From Master 6801							 
+   reg    OS3_N        ; //:  pin 31 : Active low OS3 From Master 6801							 
    reg    BMREQ_N      ; //: pin 32 : Active low Buffered Memory Request						 
    reg    BRD_N        ; //: pin 33 : Active low Buffered Memory Read							 
    reg    BRFSH_N      ; //: pin 34 : Active low Buffered Memory Refresh						 
@@ -102,18 +102,57 @@ module testbench ();
 		  .B_PHI(B_PHI)
 		  
                   );
-
-   // Init file handles and waveform dumping
-   //
+   
+   // Z80 clock and reset
+   //  
    initial begin
       // Dump waves
       $dumpfile("waves.vcd");
       $dumpvars(0, testbench);
 
+      B_PHI    <= 1'b0;
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+
+      #100;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b0;
+
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+
+      #1000;
+      
+      PBRST_N  <= 1'b0;
+      N_CVRST  <= 1'b1;
+
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+      
+      #100;
+   end
+	
+   initial begin
+      // Toggle clocks
+      //
+      while (1) begin
+	 B_PHI = ~B_PHI;
+         #150;             // 300ns duty cycle;
+      end      
+   end
+     
+   
+   // Init file handles and waveform dumping
+   //
+   initial begin
       BA15    <= 1'b0;
       BA14    <= 1'b0;
       BA13    <= 1'b0;
-      N_CVRST <= 1'b0;
       BD0     <= 1'b0;
       BD1     <= 1'b0;
       BD2     <= 1'b0;
@@ -125,17 +164,19 @@ module testbench ();
       WAIT_N  <= 1'b0;
       BUSAK_N <= 1'b0;
       DMA_N   <= 1'b0;
-      PBRST_N <= 1'b0;
       OS3_N   <= 1'b0;
       BMREQ_N <= 1'b0;
       BRD_N   <= 1'b0;
       BRFSH_N <= 1'b0;
       BM1_N   <= 1'b0;
-      B_PHI   <= 1'b0;
 
-      #200;   
+
+      #4000;   
 
       $display("\n\nSimulation end.");
+
+      $finish();
+      
       
    end // initial begin   
 

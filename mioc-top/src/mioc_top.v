@@ -281,7 +281,7 @@ module mioc_top(
 		     );
 
    mioc_flop_rtl  u2 (.q(w_u2q),      
-		      .qbar(w_u2q),
+		      .qbar(w_u2qb),
 
 		      .in1(PIN_IN_25),     // posedge reset	     
 		      .in2(w_u39z),        // negedge reset (???)   
@@ -655,7 +655,7 @@ module mioc_top(
 		      );
    
    mioc_inv1_nmos u75 (.z(w_u75z),
-		      .in1(w_81z)
+		      .in1(w_u81z)
 		      );      
 
    mioc_inv1_nmos u76 (.z(w_u76z),
@@ -690,7 +690,7 @@ module mioc_top(
 			       .in1(PIN_IN_32),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
-			       .in4(w_82z)          
+			       .in4(w_u82z)          
 			       );
 
    mioc_inv1_nmos u82 (.z(w_u82z),
@@ -701,7 +701,7 @@ module mioc_top(
 			       .in1(PIN_IN_33),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
-			       .in4(w_82z)          
+			       .in4(w_u82z)          
 			       );
 
    mioc_nor2_nmos u84 (.z(w_u84z),
@@ -727,7 +727,7 @@ module mioc_top(
 		      );
 
    mioc_flop_rtl u88 (.q(w_u88q),      
-		      .qbar(w_u88q),
+		      .qbar(w_u88qb),
 
 		      .in1(w_u91z),      // posedge reset	     
 		      .in2(w_u85z),      // negedge reset (???)   
@@ -741,7 +741,7 @@ module mioc_top(
 
 
    mioc_flop_rtl u90 (.q(w_u90q),      
-		      .qbar(w_u90q),
+		      .qbar(w_u90qb),
 
 		      .in1(w_u91z),      // posedge reset	     
 		      .in2(w_u85z),      // negedge reset (???)   
@@ -754,7 +754,7 @@ module mioc_top(
 		       );         
 
    mioc_flop_rtl u92 (.q(w_u92q),      
-		      .qbar(w_u92q),
+		      .qbar(w_u92qb),
 
 		      .in1(w_u91z),      // posedge reset	     
 		      .in2(PIN_IN_31),   // negedge reset (???)   
@@ -763,7 +763,7 @@ module mioc_top(
 	              );   
 
    mioc_flop_rtl u93 (.q(w_u93q),      
-		      .qbar(w_u93q),
+		      .qbar(w_u93qb),
 
 		      .in1(w_u91z),      // posedge reset	     
 		      .in2(w_u80z),      // negedge reset (???)   
@@ -807,7 +807,7 @@ module mioc_top(
    assign  PIN_IN_3    = BA15      ; //: pin 3 : Address line 15
    assign  PIN_IN_4    = BA14      ; //: pin 4 : Address line 14
    assign  PIN_IN_5    = BA13      ; //: pin 5 : Address line 13
-   assign  PIN_IN_6    = N_CVRST   ; //: pin 6 : Active low reset signal “Game Reset”
+   assign  PIN_IN_6    = ~N_CVRST   ; //: pin 6 : Active low reset signal “Game Reset”
    assign  PIN_IN_7    = BD0       ; //: pin 7 : Data line 0
    assign  PIN_IN_8    = BD1       ; //: pin 8 : Data line 1
    assign  PIN_IN_9    = BD2       ; //: pin 9 : Data line 2
@@ -818,17 +818,17 @@ module mioc_top(
    assign  PIN_IN_13   = BA7       ; //: pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
    assign  PIN_IN_13B  = ~BA7      ; //: INVERTED pin13 : Address line 7 (according to earlier docs, gated by /ADDRBUFEN)
 
-   assign  PIN_IN_14   = IORQ_N    ; //: pin14 : Active low Z80 IO Request
-   assign  PIN_IN_15   = WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
-   assign  PIN_IN_16   = BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
-   assign  PIN_IN_17   = DMA_N     ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
-   assign  PIN_IN_25   = PBRST_N   ; //: pin 25 : Active low ADAM Reset switch for computer mode
+   assign  PIN_IN_14   = ~IORQ_N    ; //: pin14 : Active low Z80 IO Request
+   assign  PIN_IN_15   = ~WAIT_N    ; //: pin15 : Active low wait signal, Memory wait state
+   assign  PIN_IN_16   = ~BUSAK_N   ; //: pin16 : Active low bus acknowledge - Z80 Control
+   assign  PIN_IN_17   = ~DMA_N     ; //: pin17 : Active low DMA transaction asserted by 6801 to signal DMA to RAM
+   assign  PIN_IN_25   = ~PBRST_N   ; //: pin 25 : Active low ADAM Reset switch for computer mode
 
    assign  PIN_IN_31   = OS3_N     ; //: pin 31 : Active low OS3 From Master 6801
    assign  PIN_IN_32   = BMREQ_N   ; //: pin 32 : Active low Buffered Memory Request
    assign  PIN_IN_33   = BRD_N     ; //: pin 33 : Active low Buffered Memory Read
-   assign  PIN_IN_34   = BRFSH_N   ; //: pin 34 : Active low Buffered Memory Refresh
+   assign  PIN_IN_34   = ~BRFSH_N   ; //: pin 34 : Active low Buffered Memory Refresh
    assign  PIN_IN_35   = BM1_N     ; //: pin 35 : Active low Buffered M1, indicates M1 Z80 is in M1 state.
-   assign  PIN_IN_36   = B_PHI     ; //: pin 36 : Z80 Clock
+   assign  PIN_IN_36   = ~B_PHI     ; //: pin 36 : Z80 Clock
    
 endmodule
