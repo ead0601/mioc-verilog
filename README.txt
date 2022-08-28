@@ -29,21 +29,35 @@ targets as shown below in, # HOW TO BUILD.
    in the background, and then File->Reload Waveform in the tool. There is
    no need to restart the tool.
 
-# HOW TO BUILD
+# METHODOLOGY
+#
+#  Only run "make run" or "make waves", since make build is
+#  test dependant. Each test has the ability to have its own
+#  unique testbench.
+#
+#  1) Each test is encapsulated in its own directory
+#  2) Private testbench for each test
+#  3) Each test stores its own golden verification test pattern
+#
+
+# LIST TESTS
+#
+cd mioc-top
+ls -la tests
+
+# RUN A TEST
+#
+cd mioc-top
+
+make run test="test-001-system-reset"
+ or
+make waves test="test-001-system-reset" 
+
+
+# HOW TO BUILD SUB-BLOCKS
 #
 cd mioc-flop
 make clean
 make build    # clean also executed
 make run      # clean, build also executed
 make waves    # clean, build, run also executed
-
-# HOW TO RUN TOP (in development)
-#
-#  (make build is not directly callable)
-
-cd mioc-top
-ls -la tests
-
-make run test="test-001-system-reset"
- or
-make waves test="test-001-system-reset" 
