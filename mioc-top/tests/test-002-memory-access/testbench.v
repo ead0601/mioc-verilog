@@ -183,59 +183,27 @@ module testbench ();
       BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
       BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
       BA13    <= 1'b1;
+      N_BWR   <= 1'b0; 
+      BUSAK_N <= 1'b0;    
       
       @(negedge B_PHI);            
       BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
       BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
       BA13    <= 1'b0;
+      N_BWR   <= 1'b0;    
+      BUSAK_N <= 1'b0;            
 
       @(negedge B_PHI);
-
-      @(negedge B_PHI);      
-      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-      BA14    <= 1'b1;
-      
-      @(negedge B_PHI);            
-      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA14    <= 1'b0;
-
       @(negedge B_PHI);
-
       @(negedge B_PHI);      
-      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-      BA15    <= 1'b1;
-      
-      @(negedge B_PHI);            
+
       BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
       BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA15    <= 1'b0;
+      BA13    <= 1'b0;
+      N_BWR   <= 1'b1; 
+      BUSAK_N <= 1'b1;    
 
-      @(negedge B_PHI);
-
-      @(negedge B_PHI);      
-      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-      BA6    <= 1'b1;
       
-      @(negedge B_PHI);            
-      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA6    <= 1'b0;
-
-      @(negedge B_PHI);
-
-      @(negedge B_PHI);      
-      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-      BA7    <= 1'b1;
-      
-      @(negedge B_PHI);            
-      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA7    <= 1'b0;     
       
       #4000;
       
