@@ -47,6 +47,11 @@ module mioc_flop_rtl (
       else if ( (in1 == 1'b0) & (in4 == 1'b0) & (in3 == 1'b1) ) begin   // reset
 	 q1 <= 1'b1;
       end
+      else if ( (in1 == 1'b1) & (in4 == 1'b1) & (in3 == 1'b0) ) begin   // reset
+	 // account for simultaneous set and reset, MIOC U2 can 
+	 // experience such an event, default to reset.  
+         q1 <= 1'b0;       
+      end
       else begin
          q1 <= q; 
       end
