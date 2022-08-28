@@ -145,6 +145,10 @@ module testbench ();
          #150;             // 300ns duty cycle;
       end      
    end
+
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################     
      
    
    // Init file handles and waveform dumping
