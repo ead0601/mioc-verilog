@@ -135,6 +135,8 @@ module testbench ();
       N_CVRST  <= 1'b1;
       
       #100;
+
+      
    end
 	
    initial begin
@@ -171,8 +173,17 @@ module testbench ();
       BM1_N   <= 1'b1;
 
 
-      #4000;   
+      #4000;
 
+      @(negedge B_PHI);      
+      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
+      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
+      @(negedge B_PHI);            
+      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
+      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
+
+      #4000;
+      
       $display("\n\nSimulation end.");
 
       $finish();
