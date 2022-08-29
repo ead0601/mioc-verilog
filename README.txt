@@ -12,14 +12,26 @@ from die snapshots that were taken.
 
 # METHODOLOGY
 #
-#  Only run "make run" or "make waves", since make build is
+#  Only run "make run test=" or "make waves test=", since make build is
 #  test dependant. Each test has the ability to have its own
 #  unique testbench.
 #
-#  1) Each test is encapsulated in its own directory
-#  2) Private testbench for each test
-#  3) Each test stores its own golden verification test pattern
+#  1) Each test is encapsulated in its own directory structure
+#     	   ../mioc-top/tests/test-001-system-reset
 #
+#  2) Private testbench for each test
+#     	   ../mioc-top/tests/test-001-system-reset/testbench.v
+#
+#  3) Each test stores its own golden verification test pattern
+#     	   ../mioc-top/tests/test-001-system-reset/DATA_GOLD/waves.vcd
+#
+#  4) A simulations output data is stored in its respective DATA_OUT folder.
+#     	   ../mioc-top/tests/test-001-system-reset/DATA_OUT/waves.vcd
+#
+#  5) Each test has its own GTKWAVE config file
+#     	   ../mioc-top/tests/test-001-system-reset/waves.gtkw
+#
+#  6) Waves VCD files are also used as a method for regression checks
 
 # STATUS
 #
@@ -36,6 +48,7 @@ test-002-memory-access   - sample memory access, triggers RAS and CAS
 
 1) sudo apt install iverilog gtkwave 
 
+
 # LIST TESTS
 #
 cd mioc-top
@@ -49,6 +62,7 @@ cd mioc-top
 make run test="test-001-system-reset"
  or
 make waves test="test-001-system-reset" 
+
 
 # GTKWAVE FYI
 #
@@ -72,7 +86,18 @@ cd test-XXX-YOUR-TEST-NAME
 // #################  INSERT CUSTOM SEQUENCE BELOW #################     
 
 
+# HOW TO CHECK A TESTS FUNCTIONALITY
+#
+# (The check does a diff between captured patterns
+#  found in DATA_OUT vs DATA_GOLD)
+#
+cd mioc-top
+make check test="test-001-system-reset"
+
+
 # HOW TO BUILD SUB-BLOCKS
+#
+# (simple methodology, with no testbench structure)
 #
 cd mioc-flop
 make clean
