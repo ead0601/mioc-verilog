@@ -29,6 +29,8 @@ waves_build : clean $(V_SRC)
 
 # Used for wave viewing
 #
+# (used to capture all levels of signal transitions)
+#
 
 run :   waves_build
 	@echo "Running test $(test)"
@@ -43,7 +45,8 @@ waves:  run
 
 # Used for regression testing
 #
-
+# (tester avoids capture on internal signals, and only captures the toplevel pins)
+#
 tester_run :   tester_build
 	@echo "Running test $(test)"
 	$(RM) -f ./tests/$(test)/DATA_OUT/*.*
@@ -52,7 +55,7 @@ tester_run :   tester_build
 	$(RM) -f ./waves.vcd 
 
 check:	tester_run ./tests/$(test)/DATA_GOLD/tester.vcd ./tests/$(test)/DATA_OUT/tester.vcd 
-	$(eval ERRORS := $(shell diff ./tests/$(test)/DATA_OUT/waves.vcd  ./tests/$(test)/DATA_GOLD/waves.vcd | wc -l 2>/dev/null))
+	$(eval ERRORS := $(shell diff ./tests/$(test)/DATA_OUT/tester.vcd  ./tests/$(test)/DATA_GOLD/tester.vcd | wc -l 2>/dev/null))
 	@echo "\n\nCompared DATA_OUT vcd to DATA_GOLD vcd"
 	@echo $(ERRORS) " errors found.\n"
 

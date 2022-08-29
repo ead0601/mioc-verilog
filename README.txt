@@ -23,7 +23,7 @@ from die snapshots that were taken.
 #     	   ../mioc-top/tests/test-001-system-reset/testbench.v
 #
 #  3) Each test stores its own golden verification test pattern
-#     	   ../mioc-top/tests/test-001-system-reset/DATA_GOLD/waves.vcd
+#     	   ../mioc-top/tests/test-001-system-reset/DATA_GOLD/tester.vcd
 #
 #  4) A simulations output data is stored in its respective DATA_OUT folder.
 #     	   ../mioc-top/tests/test-001-system-reset/DATA_OUT/waves.vcd
@@ -92,6 +92,22 @@ cd test-XXX-YOUR-TEST-NAME
 #  found in DATA_OUT vs DATA_GOLD)
 #
 cd mioc-top
+make check test="test-001-system-reset"
+
+
+# HOW TO CREATE A TESTER REGRESSION
+#
+#
+
+* (after you have a test that you visually checked and approved)
+
+cd mioc-top
+make tester_run test="test-001-system-reset"
+
+cp ./tests/test-xxx-your-test/DATA_OUT/tester.vcd ./tests/test-xxx-your-test/DATA_GOLD/.
+
+(check into GIT new gold file)
+
 make check test="test-001-system-reset"
 
 
