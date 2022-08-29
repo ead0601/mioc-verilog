@@ -1,0 +1,252 @@
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module testbench $end
+$var wire 1 ! SPINDIS_N $end
+$var wire 1 " RST_N $end
+$var wire 1 # RAS_N $end
+$var wire 1 $ RA7 $end
+$var wire 1 % NETRST_N $end
+$var wire 1 & MUX $end
+$var wire 1 ' IS3_N $end
+$var wire 1 ( EN245_N $end
+$var wire 1 ) CPRST_N $end
+$var wire 1 * CAS2_N $end
+$var wire 1 + CAS1_N $end
+$var wire 1 , BUSRQ_N $end
+$var wire 1 - BOOTROMCS_N $end
+$var wire 1 . AUXROMCS_N $end
+$var wire 1 / AUXDECODE1_N $end
+$var wire 1 0 ADDRBUFEN_N $end
+$var reg 1 1 BA13 $end
+$var reg 1 2 BA14 $end
+$var reg 1 3 BA15 $end
+$var reg 1 4 BA6 $end
+$var reg 1 5 BA7 $end
+$var reg 1 6 BD0 $end
+$var reg 1 7 BD1 $end
+$var reg 1 8 BD2 $end
+$var reg 1 9 BD3 $end
+$var reg 1 : BM1_N $end
+$var reg 1 ; BMREQ_N $end
+$var reg 1 < BRD_N $end
+$var reg 1 = BRFSH_N $end
+$var reg 1 > BUSAK_N $end
+$var reg 1 ? B_PHI $end
+$var reg 1 @ DMA_N $end
+$var reg 1 A IORQ_N $end
+$var reg 1 B N_BWR $end
+$var reg 1 C N_CVRST $end
+$var reg 1 D OS3_N $end
+$var reg 1 E PBRST_N $end
+$var reg 1 F WAIT_N $end
+$var reg 1 G depth $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0G
+1F
+1E
+1D
+1C
+0B
+1A
+1@
+0?
+1>
+1=
+1<
+1;
+1:
+09
+08
+07
+06
+05
+04
+03
+02
+01
+10
+x/
+0.
+1-
+1,
+1+
+1*
+1)
+0(
+1'
+x&
+0%
+x$
+x#
+1"
+1!
+$end
+#100
+1/
+1$
+1#
+0"
+0C
+#150
+0&
+1?
+#300
+0?
+#450
+1?
+#600
+0?
+#750
+1?
+#900
+0?
+#1050
+1?
+#1100
+1"
+1C
+#1200
+0?
+#1350
+1?
+#1500
+0?
+#1650
+1?
+#1800
+0?
+#1950
+1?
+#2100
+0/
+0"
+0)
+0E
+0?
+#2250
+1?
+#2400
+0?
+#2550
+1?
+#2700
+0?
+#2850
+1?
+#3000
+0?
+#3100
+1"
+1)
+1E
+#3150
+1?
+#3300
+0?
+#3450
+1?
+#3600
+0?
+#3750
+1?
+#3900
+0?
+#4050
+1?
+#4100
+0"
+0)
+0C
+0E
+#4200
+0?
+#4350
+1?
+#4500
+0?
+#4650
+1?
+#4800
+0?
+#4950
+1?
+#5100
+1"
+1)
+1C
+1E
+0?
+#5250
+1?
+#5400
+0?
+#5550
+1?
+#5700
+0?
+#5850
+1?
+#6000
+0?
+#6150
+1?
+#6300
+0?
+#6450
+1?
+#6600
+0?
+#6750
+1?
+#6900
+0?
+#7050
+1?
+#7200
+0?
+#7350
+1?
+#7500
+0?
+#7650
+1?
+#7800
+0?
+#7950
+1?
+#8100
+0?
+#8250
+1?
+#8400
+0?
+#8550
+1?
+#8700
+0?
+#8850
+1?
+#9000
+0?
+#9150
+1?
+#9300
+0?
+#9450
+1?
+#9600
+0?
+#9750
+1?
+#9900
+0?
+#10050
+1?
+#10100

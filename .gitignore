@@ -6,4 +6,4 @@
 **/*.xcf
 **/DATA_OUT/*.*
 !**/.empty
-!**/DATA_GOLD/waves.vcd
+!**/DATA_GOLD/tester.vcd
