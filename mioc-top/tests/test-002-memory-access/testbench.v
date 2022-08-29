@@ -103,59 +103,14 @@ module testbench ();
 		  
                   );
    
-   // Z80 clock and reset
+   // Z80 reset
    //  
    initial begin
       // Dump waves
       $dumpfile("waves.vcd");
       $dumpvars(0, testbench);
 
-      B_PHI    <= 1'b0;
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-
-      #100;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b0;
-
-      #1000;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-
-      #1000;
-      
-      PBRST_N  <= 1'b0;
-      N_CVRST  <= 1'b1;
-
-      #1000;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-      
-      #100;
-
-      
-   end
-	
-   initial begin
-      // Toggle clocks
-      //
-      while (1) begin
-	 B_PHI = ~B_PHI;
-         #150;             // 300ns duty cycle;
-      end      
-   end
-
-
-   // #################  INSERT CUSTOM SEQUENCE BELOW #################
-   // #################  INSERT CUSTOM SEQUENCE BELOW #################
-   // #################  INSERT CUSTOM SEQUENCE BELOW #################     
-   
-   // Init file handles and waveform dumping
-   //
-   initial begin
+      // Init all inputs
       BA15    <= 1'b0;
       BA14    <= 1'b0;
       BA13    <= 1'b0;
@@ -175,9 +130,47 @@ module testbench ();
       BRD_N   <= 1'b1;
       BRFSH_N <= 1'b1;
       BM1_N   <= 1'b1;
+      B_PHI   <= 1'b0;
+      
+      
+      // Toggle ADAM reset
+      
+      #100;
+
+      // ############### Toggle ADAM reset      
+      PBRST_N  <= 1'b0;
+      N_CVRST  <= 1'b1;
+
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+      
+      #1000;
+
+   end
+
+   // Toggle system clock
+   //
+   initial begin
+      // Toggle clocks
+      //
+      while (1) begin
+	 B_PHI = ~B_PHI;
+         #150;             // 300ns duty cycle (3.3Mhz)
+      end      
+   end
 
 
-      #4000;
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################
+   // #################  INSERT CUSTOM SEQUENCE BELOW #################     
+   
+   // Init file handles and waveform dumping
+   //
+   initial begin
+
+      #2000; // Wait for ADAM reset (above) to complete
 
       @(negedge B_PHI);      
       BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
@@ -201,11 +194,9 @@ module testbench ();
       BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
       BA13    <= 1'b0;
       N_BWR   <= 1'b1; 
-      BUSAK_N <= 1'b1;    
-
+      BUSAK_N <= 1'b1;
       
-      
-      #4000;
+      #2000;
       
       $display("\n\nSimulation end.");
 

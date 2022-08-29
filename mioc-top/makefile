@@ -12,6 +12,7 @@ CWD = $(shell pwd)
 
 RM = /usr/bin/rm
 MD = /usr/bin/mkdir
+TL = /usr/bin/tail
 
 V_SRC = $(shell find ../. -name "*mioc*.v" 2>/dev/null)
 
@@ -23,15 +24,22 @@ run :   build
 	$(RM) -f DATA_OUT/*.*
 	$(RM) -f DATA_GOLD/*.*
 	$(RUN) a.out
+	$(TL) -n +4 ./waves.vcd > ./DATA_OUT/waves.vcd 
+	$(RM) -f ./waves.vcd 
 
 waves:  run
-	gtkwave waves.vcd waves.gtkw
+	gtkwave ./DATA_OUT/waves.vcd waves.gtkw
+
+check:	run ./tests/$(test)/DATA_GOLD/waves.vcd
+	$(eval ERRORS := $(shell diff ./DATA_OUT/waves.vcd ./tests/$(test)/DATA_GOLD/waves.vcd | wc -l 2>/dev/null))
+	@echo "\n\nCompared DATA_OUT vcd to DATA_GOLD vcd"
+	@echo $(ERRORS) " errors found.\n"
 
 # Clean
 #
 clean :
 	$(RM) -f ./DATA_OUT/*.*
-	$(RM) -f a.out waves.vcd *.xcf
+	$(RM) -f a.out *.xcf
 
 # Remove builtin rules
 #

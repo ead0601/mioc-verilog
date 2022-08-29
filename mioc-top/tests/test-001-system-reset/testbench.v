@@ -103,46 +103,44 @@ module testbench ();
 		  
                   );
    
-   // Z80 clock and reset
+   // Init all Inputs
    //  
    initial begin
       // Dump waves
       $dumpfile("waves.vcd");
       $dumpvars(0, testbench);
-
-      B_PHI    <= 1'b0;
+      BA15     <= 1'b0;
+      BA14     <= 1'b0;
+      BA13     <= 1'b0;
+      BD0      <= 1'b0;
+      BD1      <= 1'b0;
+      BD2      <= 1'b0;
+      BD3      <= 1'b0;
+      N_BWR    <= 1'b0;
+      BA6      <= 1'b0;
+      BA7      <= 1'b0;
+      IORQ_N   <= 1'b1;
+      WAIT_N   <= 1'b1;
+      BUSAK_N  <= 1'b1;
+      DMA_N    <= 1'b1;
+      OS3_N    <= 1'b1;
+      BMREQ_N  <= 1'b1;
+      BRD_N    <= 1'b1;
+      BRFSH_N  <= 1'b1;
+      BM1_N    <= 1'b1;
+      B_PHI    <= 1'b0;      
       PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-
-      #100;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b0;
-
-      #1000;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-
-      #1000;
-      
-      PBRST_N  <= 1'b0;
-      N_CVRST  <= 1'b1;
-
-      #1000;
-      
-      PBRST_N  <= 1'b1;
-      N_CVRST  <= 1'b1;
-      
-      #100;
+      N_CVRST  <= 1'b1;      
    end
-	
+
+   // Toggle system clock
+   //
    initial begin
       // Toggle clocks
       //
       while (1) begin
 	 B_PHI = ~B_PHI;
-         #150;             // 300ns duty cycle;
+         #150;             // 300ns duty cycle (3.3Mhz)
       end      
    end
 
@@ -154,27 +152,47 @@ module testbench ();
    // Init file handles and waveform dumping
    //
    initial begin
-      BA15    <= 1'b0;
-      BA14    <= 1'b0;
-      BA13    <= 1'b0;
-      BD0     <= 1'b0;
-      BD1     <= 1'b0;
-      BD2     <= 1'b0;
-      BD3     <= 1'b0;
-      N_BWR   <= 1'b0;
-      BA6     <= 1'b0;
-      BA7     <= 1'b0;
-      IORQ_N  <= 1'b1;
-      WAIT_N  <= 1'b1;
-      BUSAK_N <= 1'b1;
-      DMA_N   <= 1'b1;
-      OS3_N   <= 1'b1;
-      BMREQ_N <= 1'b1;
-      BRD_N   <= 1'b1;
-      BRFSH_N <= 1'b1;
-      BM1_N   <= 1'b1;
 
+      // This test toggle both resets and will evaluate RST_N
+      
+      // ############### Toggle Game reset
+      //
+      #100; // WAIT 100ns
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b0;
 
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+
+      #1000;
+
+      // ############### Toggle ADAM reset      
+      PBRST_N  <= 1'b0;
+      N_CVRST  <= 1'b1;
+
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+      
+      #1000;
+
+      // ############### Toggle ADAM and Game reset (known error condition with flop U2)      
+      // (fixed SR flop to handle this situation
+      //
+      PBRST_N  <= 1'b0;
+      N_CVRST  <= 1'b0;
+
+      #1000;
+      
+      PBRST_N  <= 1'b1;
+      N_CVRST  <= 1'b1;
+      
+      #1000;
+      
       #4000;   
 
       $display("\n\nSimulation end.");
