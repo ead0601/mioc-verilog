@@ -1,12 +1,15 @@
 `timescale 1ns / 1 ns
 
-`define NULL 0    
+`define NULL 0
+   
 
 // Generic testbench 
 //
 // MIOC ASIC top-level  Edward Diaz 
 //
 module testbench ();
+
+   reg depth = 0;   
    
    // INPUTS
    // 
@@ -102,13 +105,32 @@ module testbench ();
 		  .B_PHI(B_PHI)
 		  
                   );
+
+   
+`ifdef TESTER
+       initial begin
+	  // Dump waves, and capture just the IO PINS
+	  // (done to hide interna changes that wont affect overall functions)
+	  //  	  
+	  $display("Wave dumping for test.");	  
+	  $dumpfile("waves.vcd");
+	  $dumpvars(1, testbench);
+       end
+`else
+   initial begin
+      // Dump waves, and capture everything 
+      // (all levels of hierarchy)
+      //
+      $display("Wave dumping for simulation.");	  
+      $dumpfile("waves.vcd");
+      $dumpvars(0, testbench);
+   end   
+`endif
    
    // Init all Inputs
    //  
    initial begin
-      // Dump waves
-      $dumpfile("waves.vcd");
-      $dumpvars(0, testbench);
+      
       BA15     <= 1'b0;
       BA14     <= 1'b0;
       BA13     <= 1'b0;
