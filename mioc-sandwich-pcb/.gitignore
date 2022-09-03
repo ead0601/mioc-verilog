@@ -1,0 +1,3 @@
+# Standard KiCad ignores
+*.zip
+*-backups

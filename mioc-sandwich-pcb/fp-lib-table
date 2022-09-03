@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "CPLDs")(type "KiCad")(uri "${KIPRJMOD}/CPLDs.pretty")(options "")(descr ""))
+)
