@@ -1,6 +1,6 @@
 // This is the start of timing constraint audit file
 
-/tools/projects/mioc-top/mioc_top.ucf
+/build/repo/mioc-verilog/xilinx/mioc-top/mioc_top.ucf
 
 Create Timing Constraints for Clock Domains (PERIOD)
 -------------------------------------------------
