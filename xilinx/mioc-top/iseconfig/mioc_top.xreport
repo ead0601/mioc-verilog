@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2022-09-06T05:17:38</DateModified>
+  <DateModified>2022-09-06T09:28:43</DateModified>
   <ModuleName>mioc_top</ModuleName>
-  <SummaryTimeStamp>2022-09-06T02:02:03</SummaryTimeStamp>
-  <SavedFilePath>/local/ws/ediaz/PROJECTS/XILINX/MIOC/mioc-top/iseconfig/mioc_top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/local/ws/ediaz/PROJECTS/XILINX/MIOC/mioc-top/</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2022-09-06T09:23:41</SummaryTimeStamp>
+  <SavedFilePath>/tools/projects/mioc-top/iseconfig/mioc_top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/tools/projects/mioc-top/</ImplementationReportsDirectory>
   <DateInitialized>2022-09-05T20:30:17</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

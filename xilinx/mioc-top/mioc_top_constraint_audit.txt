@@ -1,6 +1,6 @@
 // This is the start of timing constraint audit file
 
-/local/ws/ediaz/PROJECTS/XILINX/MIOC/mioc-top/mioc_top.ucf
+/tools/projects/mioc-top/mioc_top.ucf
 
 Create Timing Constraints for Clock Domains (PERIOD)
 -------------------------------------------------
