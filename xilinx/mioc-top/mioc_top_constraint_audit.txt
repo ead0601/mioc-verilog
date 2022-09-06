@@ -1,0 +1,108 @@
+// This is the start of timing constraint audit file
+
+/local/ws/ediaz/PROJECTS/XILINX/MIOC/mioc-top/mioc_top.ucf
+
+Create Timing Constraints for Clock Domains (PERIOD)
+-------------------------------------------------
+    TIMESPEC TS_B_PHI = PERIOD "B_PHI" 20 ns HIGH 50%
+
+
+Create Timing Constraints for Inputs (OFFSET IN)
+-------------------------------------------------
+
+
+Create Timing Constraints for Outputs (OFFSET OUT)
+-------------------------------------------------
+
+
+Unconstrained Clock Nets
+-------------------------------------------------
+    BA6
+    BA7
+    IORQ_N
+    N_BWR
+    OS3_N
+    u57/qr
+    w_u54q
+    w_u60q
+
+
+Unconstrained Ports (Inputs)
+-------------------------------------------------
+    BA13
+    BA14
+    BA15
+    BD0
+    BD1
+    BD2
+    BD3
+    BM1_N
+    BMREQ_N
+    BRD_N
+    BRFSH_N
+    BUSAK_N
+    DMA_N
+    N_CVRST
+    PBRST_N
+    WAIT_N
+
+
+Unconstrained Ports (Outputs)
+-------------------------------------------------
+    ADDRBUFEN_N
+    AUXDECODE1_N
+    AUXROMCS_N
+    BOOTROMCS_N
+    BUSRQ_N
+    CAS1_N
+    CAS2_N
+    CPRST_N
+    EN245_N
+    IS3_N
+    MUX
+    NETRST_N
+    RA7
+    RAS_N
+    RST_N
+    SPINDIS_N
+
+
+Group Query
+-------------------------------------------------
+tnm_net  (timing name : instance name)
+-------------------------------------------------
+    B_PHI :
+       1 .  u47
+       2 .  u46
+       3 .  u33
+       4 .  u93
+       5 .  qr
+       6 .  FDCP
+       7 .  u77
+       8 .  qr
+       9 .  FDCP
+       10 .  u60
+       11 .  qr
+       12 .  FDCP
+       13 .  u54
+       14 .  qr
+       15 .  FDCP
+       16 .  u45
+       17 .  qr
+       18 .  FDCP
+       19 .  u14
+       20 .  qr
+       21 .  FDCP
+
+tnm  (timing name : instance name)
+-------------------------------------------------
+
+timegrp  (timing name : instance name)
+-------------------------------------------------
+
+tpsync  (timing name : instance name)
+-------------------------------------------------
+
+tpthru  (timing name : instance name)
+-------------------------------------------------
+

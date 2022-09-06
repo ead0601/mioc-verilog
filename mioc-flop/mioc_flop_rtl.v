@@ -32,20 +32,21 @@ module mioc_flop_rtl (
 
    reg    qr, n_qr; 
 
-   always @(negedge in2, posedge in1, posedge in4) begin
-      if (in1 == 1'b1)
-	qr <= 1'b0;
-      else if (in4 == 1'b1) begin
-	qr <= 1'b1;
+   always @(negedge in2 or posedge in1 or posedge in4) begin
+      if (in1) begin
+	qr <= 1'b0;          // async reset
+      end
+      else if (in4) begin
+	qr <= 1'b1;          // async set
       end
       else begin
-	 qr <= n_qr;
+	 qr <= in3;         // assign next value	 
       end      
    end
    
-   always @(in3) begin
-      n_qr = in3;
-   end
+   //always @(in3) begin
+//	 n_qr = in3;
+  // end
    
    assign q = qr;
    assign qbar = ~qr;

@@ -48,7 +48,7 @@ waves:  run
 # (tester avoids capture on internal signals, and only captures the toplevel pins)
 #
 tester_run :   tester_build
-	@echo "Running test $(test)"
+	@echo "Running tester version of: $(test)"
 	$(RM) -f ./tests/$(test)/DATA_OUT/*.*
 	$(RUN) a.out
 	$(TL) -n +4 ./waves.vcd > ./tests/$(test)/DATA_OUT/tester.vcd 
