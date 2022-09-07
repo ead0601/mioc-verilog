@@ -55,3 +55,10 @@ INST "RAS_N" TNM = Outputs;
 INST "RST_N" TNM = Outputs;
 INST "SPINDIS_N" TNM = Outputs;
 TIMEGRP "Outputs" OFFSET = OUT 20 ns AFTER "B_PHI";
+#Created by Constraints Editor (xc9572xl-tq100-5) - 2022/09/07
+NET "u57/qr" TNM_NET = u57/qr;
+TIMESPEC TS_u57_qr = PERIOD "u57/qr" 20 ns HIGH 50%;
+NET "w_u54q" TNM_NET = w_u54q;
+TIMESPEC TS_w_u54q = PERIOD "w_u54q" 20 ns HIGH 50%;
+NET "w_u60q" TNM_NET = w_u60q;
+TIMESPEC TS_w_u60q = PERIOD "w_u60q" 20 ns HIGH 50%;
