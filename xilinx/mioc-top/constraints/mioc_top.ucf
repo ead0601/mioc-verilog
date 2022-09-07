@@ -1,0 +1,64 @@
+
+
+
+#Created by Constraints Editor (xc9572xl-pc44-5) - 2022/09/05
+NET "B_PHI" TNM_NET = B_PHI;
+TIMESPEC TS_B_PHI = PERIOD "B_PHI" 20 ns HIGH 50%;
+#Created by Constraints Editor (xc95144xl-tq100-5) - 2022/09/05
+INST "BD0" TNM = Data;
+INST "BD1" TNM = Data;
+INST "BD2" TNM = Data;
+INST "BD3" TNM = Data;
+TIMEGRP "Data" OFFSET = IN 10 ns VALID 20 ns BEFORE "B_PHI" RISING;
+
+INST "BA6" TNM = Address;
+INST "BA7" TNM = Address;
+INST "BA13" TNM = Address;
+INST "BA14" TNM = Address;
+INST "BA15" TNM = Address;
+TIMEGRP "Address" OFFSET = IN 10 ns VALID 20 ns BEFORE "B_PHI" RISING;
+#Created by Constraints Editor (xc95144xl-tq100-5) - 2022/09/05
+INST "BM1_N" TNM = Inputs;
+INST "BMREQ_N" TNM = Inputs;
+INST "BRD_N" TNM = Inputs;
+INST "BRFSH_N" TNM = Inputs;
+INST "BUSAK_N" TNM = Inputs;
+INST "DMA_N" TNM = Inputs;
+INST "N_CVRST" TNM = Inputs;
+INST "PBRST_N" TNM = Inputs;
+INST "WAIT_N" TNM = Inputs;
+TIMEGRP "Inputs" OFFSET = IN 10 ns VALID 20 ns BEFORE "BA6" RISING;
+NET "BA6" TNM_NET = BA6;
+TIMESPEC TS_BA6 = PERIOD "BA6" 20 ns HIGH 50%;
+NET "BA7" TNM_NET = BA7;
+TIMESPEC TS_BA7 = PERIOD "BA7" 20 ns HIGH 50%;
+NET "IORQ_N" TNM_NET = IORQ_N;
+TIMESPEC TS_IORQ_N = PERIOD "IORQ_N" 20 ns HIGH 50%;
+NET "N_BWR" TNM_NET = N_BWR;
+TIMESPEC TS_N_BWR = PERIOD "N_BWR" 20 ns HIGH 50%;
+NET "OS3_N" TNM_NET = OS3_N;
+TIMESPEC TS_OS3_N = PERIOD "OS3_N" 20 ns HIGH 50%;
+INST "ADDRBUFEN_N" TNM = Outputs;
+INST "AUXDECODE1_N" TNM = Outputs;
+INST "AUXROMCS_N" TNM = Outputs;
+INST "BOOTROMCS_N" TNM = Outputs;
+INST "BUSRQ_N" TNM = Outputs;
+INST "CAS1_N" TNM = Outputs;
+INST "CAS2_N" TNM = Outputs;
+INST "CPRST_N" TNM = Outputs;
+INST "EN245_N" TNM = Outputs;
+INST "IS3_N" TNM = Outputs;
+INST "MUX" TNM = Outputs;
+INST "NETRST_N" TNM = Outputs;
+INST "RA7" TNM = Outputs;
+INST "RAS_N" TNM = Outputs;
+INST "RST_N" TNM = Outputs;
+INST "SPINDIS_N" TNM = Outputs;
+TIMEGRP "Outputs" OFFSET = OUT 20 ns AFTER "B_PHI";
+#Created by Constraints Editor (xc9572xl-tq100-5) - 2022/09/07
+NET "u57/qr" TNM_NET = u57/qr;
+TIMESPEC TS_u57_qr = PERIOD "u57/qr" 20 ns HIGH 50%;
+NET "w_u54q" TNM_NET = w_u54q;
+TIMESPEC TS_w_u54q = PERIOD "w_u54q" 20 ns HIGH 50%;
+NET "w_u60q" TNM_NET = w_u60q;
+TIMESPEC TS_w_u60q = PERIOD "w_u60q" 20 ns HIGH 50%;

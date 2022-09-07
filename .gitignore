@@ -9,6 +9,7 @@
 !**/.empty
 !**/DATA_GOLD/tester.vcd
 
+**/tmperr.err
 **/_ngo/
 **/_xmsgs/ngdbuild.xmsgs
 **/_xmsgs/pn_parser.xmsgs
@@ -33,7 +34,6 @@
 **/mioc_top.tspec
 **/mioc_top.vm6
 **/mioc_top.xml
-**/mioc_top.xst
 **/mioc_top_build.xml
 **/mioc_top_envsettings.html
 **/mioc_top_html/

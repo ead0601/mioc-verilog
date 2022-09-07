@@ -1,0 +1,15 @@
+#!/bin/bash
+
+xst -intstyle ise -ifn "/build/repo/mioc-verilog/xilinx/mioc-top/constraints/mioc_top.xst" -ofn "/build/repo/mioc-verilog/xilinx/mioc-top/mioc_top.syr"
+
+ngdbuild -intstyle ise -dd _ngo -uc constraints/mioc_top.ucf -p xc9572xl-TQ100-5 mioc_top.ngc mioc_top.ngd  
+
+cpldfit -intstyle ise -p xc9572xl-5-TQ100 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper mioc_top.ngd
+
+XSLTProcess mioc_top_build.xml 
+
+tsim -intstyle ise mioc_top mioc_top.nga 
+
+taengine -intstyle ise -f mioc_top -l reports/timing_report.htm 
+
+hprep6 -s IEEE1149 -n mioc_top -i mioc_top 
