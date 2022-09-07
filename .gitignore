@@ -44,3 +44,5 @@
 **/xlnx_auto_0_xdb/
 **/xst/
 **/_xmsgs/*.*
+**/mioc_top_summary.html
+**/mioc_top.xreport
