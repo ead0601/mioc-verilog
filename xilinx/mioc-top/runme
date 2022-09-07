@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p xst/projnav.tmp
+
 xst -intstyle ise -ifn "/build/repo/mioc-verilog/xilinx/mioc-top/constraints/mioc_top.xst" -ofn "/build/repo/mioc-verilog/xilinx/mioc-top/mioc_top.syr"
 
 ngdbuild -intstyle ise -dd _ngo -uc constraints/mioc_top.ucf -p xc9572xl-TQ100-5 mioc_top.ngc mioc_top.ngd  

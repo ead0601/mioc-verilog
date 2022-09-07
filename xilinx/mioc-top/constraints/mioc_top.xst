@@ -1,7 +1,7 @@
 set -tmpdir "xst/projnav.tmp"
 set -xsthdpdir "xst"
 run
--ifn mioc_top.prj
+-ifn constraints/mioc_top.prj
 -ifmt mixed
 -ofn mioc_top
 -ofmt NGC
@@ -12,19 +12,19 @@ run
 -iuc NO    
 -uc /build/repo/mioc-verilog/xilinx/mioc-top/constraints/mioc_top_syn.xcf
 -keep_hierarchy Yes
--netlist_hierarchy As_Optimized 
+-netlist_hierarchy As_Optimized
 -rtlview Yes
 -hierarchy_separator /
 -bus_delimiter <>
 -case Maintain
 -verilog2001 YES
--fsm_extract NO -fsm_encoding Auto
--safe_implementation NO
--mux_extract NO
--resource_sharing NO
+-fsm_extract YES -fsm_encoding Auto
+-safe_implementation No
+-mux_extract Yes
+-resource_sharing YES
 -iobuf YES
 -pld_mp YES
 -pld_xp YES
 -pld_ce YES
 -wysiwyg NO
--equivalent_register_removal NO
+-equivalent_register_removal YES

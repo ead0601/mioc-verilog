@@ -64,3 +64,21 @@ When prompted selected the install Xilinx ISE path into:
     ise &
 
     Open project mioc-top.xise
+
+    (please note that this not the selected method of running)
+
+    This method depends on the GUI, where control of synthesis
+    constraints is not as desired. We need to be able to lock down
+    the 80's style design with KEEP on nets and KEEP_HIERARCHY on
+    instances, since the MIOC design does not follow conventional
+    design methodology. The following step is how we will be building
+    MIOC
+
+8)  **Starting MIOC build from the command line:**
+
+    cd /build/repo/mioc-verilog/Xilinx
+
+    source /build/tools/Xilinx/14.7/ISE\_DS/settings64.sh (if you have
+    not done it already)
+
+    ./runme
