@@ -21,11 +21,12 @@ download**
 
 > mkdir /build/tools/Xilinx
 >
-> tar -xvf Xilinx\_ISE\_DS\_Lin\_14.7\_1015\_1.tar
+> (un-tar into a temp location, NOT the directory above)
+> tar -xvf Xilinx\_ISE\_DS\_Lin\_14.7\_1015\_1.tar  
 >
 > cd Xilinx\_ISE\_DS\_Lin\_14.7\_1015\_1
-
-./xsetup (run)
+>
+>./xsetup (run)
 
 When prompted selected the install Xilinx ISE path into:
 
