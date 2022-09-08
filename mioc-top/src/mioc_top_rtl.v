@@ -154,13 +154,13 @@ module mioc_top(
    
    // SOC BLOCK NAMES ( temp here for reference of module names )
    //    
-   // mioc_nor3_nmos 
+   // mioc_nor3_rtl 
    // mioc_flop_rtl     (q is port on the right)
-   // mioc_xnor2_nmos 
-   // mioc_nand4_nor2_nmos 
-   // mioc_nand2_nmos 
-   // mioc_inv1_nmos 
-   // mioc_nor2_nmos 
+   // mioc_xnor2_rtl 
+   // mioc_nand4_nor2_rtl 
+   // mioc_nand2_rtl 
+   // mioc_inv1_rtl 
+   // mioc_nor2_rtl 
 
    // INTERNAL COMPONENT WIRES
    //
@@ -289,53 +289,53 @@ module mioc_top(
 		      .in4(PIN_IN_6)	   // posedge set           
 	              );
 
-   mioc_nor2_nmos u3 (.z(w_u3z),
+   mioc_nor2_rtl u3 (.z(w_u3z),
 		      .in1(PIN_IN_5),
 		      .in2(PIN_IN_4)
 		      );
 
-   mioc_inv1_nmos u4 (.z(w_u4z),
+   mioc_inv1_rtl u4 (.z(w_u4z),
 		      .in1(w_u3z)
 		      );
 
-   mioc_nand2_nmos u5 (.z(w_u5z),
+   mioc_nand2_rtl u5 (.z(w_u5z),
 		       .in1(w_u4z),
 		       .in2(w_u20z)
 		       );
    
-   mioc_nor2_nmos u6 (.z(w_u6z),
+   mioc_nor2_rtl u6 (.z(w_u6z),
 		      .in1(w_u25z),
 		      .in2(w_u18z)
 		      );
 
-   mioc_inv1_nmos u7 (.z(w_u7z),
+   mioc_inv1_rtl u7 (.z(w_u7z),
 		      .in1(w_u6z)
 		      ); 
 
-   mioc_nand2_nmos u8 (.z(w_u8z),
+   mioc_nand2_rtl u8 (.z(w_u8z),
 		       .in1(w_u24z),
 		       .in2(w_u7z)
 		       );
    
-   mioc_nand2_nmos u9 (.z(w_u9z),
+   mioc_nand2_rtl u9 (.z(w_u9z),
 		       .in1(w_u24z),
 		       .in2(w_u10z)
 		       );   
    
-   mioc_inv1_nmos u10 (.z(w_u10z),
+   mioc_inv1_rtl u10 (.z(w_u10z),
 		      .in1(w_u13z)
 		      );
    
-   mioc_inv1_nmos u11 (.z(w_u11z),
+   mioc_inv1_rtl u11 (.z(w_u11z),
 		      .in1(PIN_IN_3)
 		      );
 
-   mioc_nor2_nmos u12 (.z(w_u12z),
+   mioc_nor2_rtl u12 (.z(w_u12z),
 		      .in1(w_u48z),
 		      .in2(w_u11z)
 		      );
 
-   mioc_nor2_nmos u13 (.z(w_u13z),
+   mioc_nor2_rtl u13 (.z(w_u13z),
 		      .in1(w_u35z),
 		      .in2(w_u48z)
 		      );
@@ -361,100 +361,100 @@ module mioc_top(
 		       .in4(PIN_IN_6)       // posedge set           
 		     );
 
-   mioc_nor3_nmos u18 (.z(w_u18z),
+   mioc_nor3_rtl u18 (.z(w_u18z),
 		      .in1(w_u38qb),
 		      .in2(w_u17q),
 		      .in3(w_u19z)
 		      );
 
-   mioc_inv1_nmos u19 (.z(w_u19z),
+   mioc_inv1_rtl u19 (.z(w_u19z),
 		      .in1(w_u31z)
 		      );
 
-   mioc_nor3_nmos u20 (.z(w_u20z),
+   mioc_nor3_rtl u20 (.z(w_u20z),
 		      .in1(w_u38qb),
 		      .in2(w_u17qb),
 		      .in3(w_u19z)
 		      );
 
-   mioc_inv1_nmos u21 (.z(w_u21z),
+   mioc_inv1_rtl u21 (.z(w_u21z),
 		      .in1(w_u26z)
 		      );
 
-   mioc_nand2_nmos u22 (.z(w_u22z),
+   mioc_nand2_rtl u22 (.z(w_u22z),
 		       .in1(w_u3z),
 		       .in2(w_u20z)
 		       );      
 
-   mioc_xnor2_nmos u23 (.z(w_u23z),
+   mioc_xnor2_rtl u23 (.z(w_u23z),
                         .in1(PIN_IN_13),    // ############# PIN 13 ############
                         .in2(w_u44z)
 			);
 
-   mioc_inv1_nmos u24 (.z(w_u24z),
+   mioc_inv1_rtl u24 (.z(w_u24z),
 		      .in1(w_u56z)
 		      );
 
-   mioc_nor3_nmos u25 (.z(w_u25z),
+   mioc_nor3_rtl u25 (.z(w_u25z),
 		      .in1(w_u1qb),
 		      .in2(w_u2q),
 		      .in3(w_u28z)
 		      );
    
-   mioc_nor3_nmos u26 (.z(w_u26z),
+   mioc_nor3_rtl u26 (.z(w_u26z),
 		      .in1(w_u1qb),
 		      .in2(w_u2qb),
 		      .in3(w_u28z)
 		      );
 
-   mioc_nor3_nmos u27 (.z(w_u27z),
+   mioc_nor3_rtl u27 (.z(w_u27z),
 		      .in1(w_u1q),
 		      .in2(w_u2qb),
 		      .in3(w_u28z)
 		      );
 
-   mioc_inv1_nmos u28 (.z(w_u28z),
+   mioc_inv1_rtl u28 (.z(w_u28z),
 		      .in1(w_u12z)
 		      );   
    
-   mioc_nand2_nmos u29 (.z(w_u29z),
+   mioc_nand2_rtl u29 (.z(w_u29z),
 		       .in1(w_u75z),
 		       .in2(w_u60q)
 		       );      
 
-   mioc_nor3_nmos u30 (.z(w_u30z),
+   mioc_nor3_rtl u30 (.z(w_u30z),
 		      .in1(w_u1q),
 		      .in2(w_u2q),
 		      .in3(w_u28z)
 		      );
 
-   mioc_xnor2_nmos u31 (.z(w_u31z),
+   mioc_xnor2_rtl u31 (.z(w_u31z),
                         .in1(PIN_IN_3),
                         .in2(w_u48z)
 			);   
 
-   mioc_inv1_nmos u32 (.z(w_u32z),
+   mioc_inv1_rtl u32 (.z(w_u32z),
 		      .in1(w_u5z)
 		      );   
 
-   mioc_inv1_nmos u33 (.z(w_u33z),
+   mioc_inv1_rtl u33 (.z(w_u33z),
 		      .in1(PIN_IN_36)
 		      );
 
-   mioc_nor3_nmos u34 (.z(w_u34z),
+   mioc_nor3_rtl u34 (.z(w_u34z),
 		      .in1(w_u30z),
 		      .in2(w_u32z),
 		      .in3(w_u41z)
 		      );   
    
-   mioc_inv1_nmos u35 (.z(w_u35z),
+   mioc_inv1_rtl u35 (.z(w_u35z),
 		      .in1(w_u34z)
 		      );
    
    
    // ################################### ROW 3 #############################
    //
-   mioc_nand2_nmos u37 (.z(w_u37z),
+   mioc_nand2_rtl u37 (.z(w_u37z),
 		       .in1(PIN_IN_15),
 		       .in2(PIN_IN_14)
 		       );
@@ -468,22 +468,22 @@ module mioc_top(
 		       .in4(PIN_IN_6)       // posedge set           
 		     );
    
-   mioc_inv1_nmos u39 (.z(w_u39z),
+   mioc_inv1_rtl u39 (.z(w_u39z),
 		      .in1(w_u52z)
 		      );
 
 
-   mioc_inv1_nmos u40 (.z(w_u40z),
+   mioc_inv1_rtl u40 (.z(w_u40z),
 		      .in1(w_u55z)
 		      );
 
-   mioc_nor3_nmos u41 (.z(w_u41z),
+   mioc_nor3_rtl u41 (.z(w_u41z),
 		      .in1(w_u38q),
 		      .in2(w_u17qb),
 		      .in3(w_u19z)
 		      );
    
-   mioc_nand2_nmos u42 (.z(w_u42z),
+   mioc_nand2_rtl u42 (.z(w_u42z),
 		       .in1(w_u21z),
 		       .in2(w_u22z)
 		       );
@@ -497,7 +497,7 @@ module mioc_top(
 		       .in4(1'b0)           // posedge set           
 		     );
 
-   mioc_nor2_nmos u44 (.z(w_u44z),
+   mioc_nor2_rtl u44 (.z(w_u44z),
 		       .in1(w_u60q),
 		       .in2(w_u43qb)		       
 		      );
@@ -511,37 +511,37 @@ module mioc_top(
 		       .in4(w_u75z)        // posedge set           
 		     );
 
-   mioc_inv1_nmos u46 (.z(w_u46z),
+   mioc_inv1_rtl u46 (.z(w_u46z),
 		      .in1(w_u47z)
 		      );
 
-   mioc_nor2_nmos u47 (.z(w_u47z),
+   mioc_nor2_rtl u47 (.z(w_u47z),
 		       .in1(w_u54qb),
 		       .in2(PIN_IN_36)		       
 		      );
 
-   mioc_inv1_nmos u48 (.z(w_u48z),
+   mioc_inv1_rtl u48 (.z(w_u48z),
 		      .in1(w_u78z)
 		      );
 
-   mioc_nand2_nmos u49 (.z(w_u49z),
+   mioc_nand2_rtl u49 (.z(w_u49z),
 		       .in1(w_u77q),
 		       .in2(w_u29z)
 		       );
 
-   mioc_inv1_nmos u50 (.z(w_u50z),
+   mioc_inv1_rtl u50 (.z(w_u50z),
 		      .in1(w_u27z)
 		      );
 
    
    // ################################### ROW 4 #############################
    //
-   mioc_nand2_nmos u52 (.z(w_u52z),
+   mioc_nand2_rtl u52 (.z(w_u52z),
 		       .in1(PIN_IN_12),
 		       .in2(w_u65z)
 		       );
    
-   mioc_nor2_nmos u53 (.z(w_u53z),
+   mioc_nor2_rtl u53 (.z(w_u53z),
 		       .in1(PIN_IN_6),
 		       .in2(PIN_IN_25)		       
 		      );
@@ -556,13 +556,13 @@ module mioc_top(
 		       .in4(w_u86z)        // posedge set           
 		     );
    
-   mioc_nor3_nmos u55 (.z(w_u55z),
+   mioc_nor3_rtl u55 (.z(w_u55z),
 		      .in1(w_u38q),
 		      .in2(w_u17q),
 		      .in3(w_u19z)
 		      );
 
-   mioc_nand2_nmos u56 (.z(w_u56z),
+   mioc_nand2_rtl u56 (.z(w_u56z),
 		       .in1(w_u72z),
 		       .in2(w_u73z)
 		       );
@@ -576,12 +576,12 @@ module mioc_top(
 		       .in4(1'b0)           // posedge set           
 		     );
 
-   mioc_nor2_nmos u58 (.z(w_u58z),
+   mioc_nor2_rtl u58 (.z(w_u58z),
 		       .in1(w_u75z),
 		       .in2(w_u40z)		       
 		      );
 
-   mioc_nor2_nmos u59 (.z(w_u59z),
+   mioc_nor2_rtl u59 (.z(w_u59z),
 		       .in1(w_u45q),
 		       .in2(w_u14qb)		       
 		      );
@@ -595,70 +595,70 @@ module mioc_top(
 		       .in4(w_u91z)          // posedge set           
 		     );
 
-   mioc_nor2_nmos u61 (.z(w_u61z),
+   mioc_nor2_rtl u61 (.z(w_u61z),
 		       .in1(w_u78z),
 		       .in2(w_u77q)		       
 		      );   
 
-  mioc_inv1_nmos u62 (.z(w_u62z),
+  mioc_inv1_rtl u62 (.z(w_u62z),
 		      .in1(w_u84z)
 		      );
 
-  mioc_inv1_nmos u63 (.z(w_u63z),
+  mioc_inv1_rtl u63 (.z(w_u63z),
 		      .in1(w_u61z)
 		      );
 
    
    // ################################### ROW 5 #############################
    //
-   mioc_nor2_nmos u65 (.z(w_u65z),
+   mioc_nor2_rtl u65 (.z(w_u65z),
 		       .in1(PIN_IN_11),
 		       .in2(w_u67z)		       
 		      );
 
-   mioc_inv1_nmos u66 (.z(w_u66z),
+   mioc_inv1_rtl u66 (.z(w_u66z),
 		      .in1(PIN_IN_12)
 		      );   
 
-   mioc_nand2_nmos u67 (.z(w_u67z),
+   mioc_nand2_rtl u67 (.z(w_u67z),
 		       .in1(PIN_IN_13B),   // ############# PIN 13 ############
 		       .in2(PIN_IN_14)
 		       );
 
-   mioc_nor2_nmos u69 (.z(w_u69z),
+   mioc_nor2_rtl u69 (.z(w_u69z),
 		       .in1(w_u86z),
 		       .in2(w_u54q)		       
 		      );
 
-   mioc_nand2_nmos u70 (.z(w_u70z),
+   mioc_nand2_rtl u70 (.z(w_u70z),
 		       .in1(w_u67z), 
 		       .in2(w_u89z)
 		       );
 
-   mioc_inv1_nmos u71 (.z(w_u71z),
+   mioc_inv1_rtl u71 (.z(w_u71z),
 		      .in1(w_u83z)
 		      );      
    
-   mioc_nor2_nmos u72 (.z(w_u72z),
+   mioc_nor2_rtl u72 (.z(w_u72z),
 		       .in1(PIN_IN_11),
 		       .in2(w_u45q)		       
 		      );
 
-   mioc_nor2_nmos u73 (.z(w_u73z),
+   mioc_nor2_rtl u73 (.z(w_u73z),
 		       .in1(w_u71z),
 		       .in2(w_u45q)		       
 		      );
 
-   mioc_nor2_nmos u74 (.z(w_u74z),
+   mioc_nor2_rtl u74 (.z(w_u74z),
 		       .in1(w_u75z),
 		       .in2(w_u42z)		       
 		      );
    
-   mioc_inv1_nmos u75 (.z(w_u75z),
+   mioc_inv1_rtl u75 (.z(w_u75z),
 		      .in1(w_u81z)
 		      );      
 
-   mioc_inv1_nmos u76 (.z(w_u76z),
+   mioc_inv1_rtl u76 (.z(w_u76z),
 		      .in1(w_u58z)
 		      );      
    
@@ -672,39 +672,39 @@ module mioc_top(
 		       .in4(w_u91z)          // posedge set           
 		     );
 
-   mioc_nor2_nmos u78 (.z(w_u78z),
+   mioc_nor2_rtl u78 (.z(w_u78z),
 		       .in1(PIN_IN_16),
 		       .in2(w_u69z)		       
 		      );
 
-   mioc_nand2_nmos u79 (.z(w_u79z),
+   mioc_nand2_rtl u79 (.z(w_u79z),
 		       .in1(w_u70z),
 		       .in2(w_u78z)		       
 		      );
    
-   mioc_inv1_nmos u80 (.z(w_u80z),
+   mioc_inv1_rtl u80 (.z(w_u80z),
 		      .in1(PIN_IN_36)
 		      );      
    
-   mioc_nand4_nor2_nmos  u81 (.z(w_u81z),		       
+   mioc_nand4_nor2_rtl  u81 (.z(w_u81z),		       
 			       .in1(PIN_IN_32),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
 			       .in4(w_u82z)          
 			       );
 
-   mioc_inv1_nmos u82 (.z(w_u82z),
+   mioc_inv1_rtl u82 (.z(w_u82z),
 		       .in1(w_u78z)
 		       );      
 
-   mioc_nand4_nor2_nmos  u83 (.z(w_u83z),		       
+   mioc_nand4_nor2_rtl  u83 (.z(w_u83z),		       
 			       .in1(PIN_IN_33),           
 			       .in2(w_u78z),         
 			       .in3(w_u93q),         
 			       .in4(w_u82z)          
 			       );
 
-   mioc_nor2_nmos u84 (.z(w_u84z),
+   mioc_nor2_rtl u84 (.z(w_u84z),
 		       .in1(w_u77q),
 		       .in2(PIN_IN_35)		       
 		      );
@@ -713,15 +713,15 @@ module mioc_top(
    // ################################### ROW 6 #############################
    //
 
-   mioc_inv1_nmos u85 (.z(w_u85z),
+   mioc_inv1_rtl u85 (.z(w_u85z),
 		       .in1(w_u87z)
 		       );      
 
-   mioc_inv1_nmos u86 (.z(w_u86z),
+   mioc_inv1_rtl u86 (.z(w_u86z),
 		       .in1(PIN_IN_17)
 		       );      
 
-   mioc_nand2_nmos u87 (.z(w_u87z),
+   mioc_nand2_rtl u87 (.z(w_u87z),
 		       .in1(w_u66z),
 		       .in2(w_u65z)		       
 		      );
@@ -735,7 +735,7 @@ module mioc_top(
 		      .in4(1'b0)	 // posedge set           
 	              );
 
-   mioc_inv1_nmos u89 (.z(w_u89z),
+   mioc_inv1_rtl u89 (.z(w_u89z),
 		       .in1(w_u75z)
 		       );         
 
@@ -749,7 +749,7 @@ module mioc_top(
 		      .in4(1'b0)	 // posedge set           
 	              );
 
-   mioc_inv1_nmos u91 (.z(w_u91z),
+   mioc_inv1_rtl u91 (.z(w_u91z),
 		       .in1(w_u53z)
 		       );         
 
@@ -771,7 +771,7 @@ module mioc_top(
 		      .in4(1'b0)	 // posedge set           
 	              );
 
-   mioc_inv1_nmos u94 (.z(w_u94z),
+   mioc_inv1_rtl u94 (.z(w_u94z),
 		       .in1(PIN_IN_25)
 		       );  
    

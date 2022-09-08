@@ -14,7 +14,7 @@ RM = /usr/bin/rm
 MD = /usr/bin/mkdir
 TL = /usr/bin/tail
 
-V_SRC = $(shell find ../. -name "*mioc*.v" 2>/dev/null)
+V_SRC = $(shell find ../. -name "*mioc*.v" | grep -v "xilinx" 2>/dev/null)
 
 
 # Build design

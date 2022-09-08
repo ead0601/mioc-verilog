@@ -9,6 +9,7 @@
 !**/.empty
 !**/DATA_GOLD/tester.vcd
 
+**/*.wdb
 **/tmperr.err
 **/_ngo/
 **/_xmsgs/ngdbuild.xmsgs

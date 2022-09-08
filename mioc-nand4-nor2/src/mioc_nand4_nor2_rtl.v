@@ -23,6 +23,6 @@ module mioc_nand4_nor2_rtl(
    input  in3;
    input  in4;
 
-   assign z = ~( ~(in1 & in2) | ~(in3 & in4) );
+   assign z = ( ~(in1 & in2) ) & ( ~(in3 & in4) );
 
 endmodule

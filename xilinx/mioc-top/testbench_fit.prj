@@ -1,0 +1,2 @@
+verilog work "netgen/fit/mioc_top_timesim.v"
+verilog work "testbench.v"

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "/build/repo/mioc-verilog/xilinx/mioc-top/testbench_isim_beh.exe" -prj "/build/repo/mioc-verilog/xilinx/mioc-top/testbench_beh.prj" "work.testbench" "work.glbl" 
