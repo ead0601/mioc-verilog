@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# BASH
+source /build/tools/Xilinx/14.7/ISE_DS/settings64.sh
+
+echo " "
+echo "Starting ISE..."
+ise &

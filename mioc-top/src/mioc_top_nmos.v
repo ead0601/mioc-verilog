@@ -736,7 +736,7 @@ module mioc_top(
 	              );
 
    mioc_inv1_nmos u89 (.z(w_u89z),
-		       .in1(w_u75z)
+		       .in1(w_u74z)
 		       );         
 
 

@@ -1,0 +1,12 @@
+[Inputs]
+in1
+in2
+in3
+in4
+[Outputs]
+q
+qb
+[BiDir]
+[ATTRIBUTES]
+VeriModel mioc_flop_xilinx
+

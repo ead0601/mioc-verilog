@@ -1,0 +1,52 @@
+    ____  ____
+   /   /\/   /
+  /___/  \  /    VENDOR      : Xilinx Inc.
+  \   \   \/     VERSION     : 14.7 (P.20131013)
+   \   \         APPLICATION : /build/tools/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/compxlib
+   /   /         CONTENTS    : Compilation Log
+  /___/   /\     FILENAME    : compxlib.log
+  \   \  /  \    
+   \___\/\___\
+
+Release 14.7 - /build/tools/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/compxlib 14.7 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Processing command line ...
+Library Source Paths => '/build/tools/Xilinx/14.7/ISE_DS/ISE'
+Current Working Directory => '/build/repo/mioc-verilog/xilinx/mioc-flop'
+Compilation Mode = FAST
+Execute Mode = ON
+Scheduling library installation & compilation for architectures: acr2 xa9500xl xbr xc9500 xc9500xl xpla3
+
+Scheduling library installation & compilation for libraries: uni9000 coolrunner
+
+Signature:-
+------------------------------------------------------------------------------
+/build/tools/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/compxlib -s mti_se -l verilog -arch cpld -lib unisim -lib simprim -lib uni9000 -lib coolrunner -intstyle ise 
+------------------------------------------------------------------------------
+ERROR:Compxlib - COMPXLIB[sim]: Unable to automatically find executables for simulator 'mti_se' from the following paths:
+    /build/tools/Xilinx/14.7/ISE_DS/ISE//bin/lin64
+   /build/tools/Xilinx/14.7/ISE_DS/ISE/bin/lin64
+   /build/tools/Xilinx/14.7/ISE_DS/ISE/sysgen/util
+   /build/tools/Xilinx/14.7/ISE_DS/ISE/sysgen/bin
+   /build/tools/Xilinx/14.7/ISE_DS/ISE/../../../DocNav
+   /build/tools/Xilinx/14.7/ISE_DS/PlanAhead/bin
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/bin/lin64
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/lin/bin
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/gnu/powerpc-eabi/lin/bin
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/gnu/arm/lin/bin
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_be/bin
+   /build/tools/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_le/bin
+   /build/tools/Xilinx/14.7/ISE_DS/common/bin/lin64
+   /home/ediaz/.local/bin
+   /home/ediaz/bin
+   /usr/local/sbin
+   /usr/local/bin
+   /usr/sbin
+   /usr/bin
+   /sbin
+   /bin
+   /usr/games
+   /usr/local/games
+   /snap/bin.
+Simulator 'mti_se' is ignored.

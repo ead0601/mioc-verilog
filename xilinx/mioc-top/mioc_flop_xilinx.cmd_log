@@ -1,0 +1,6 @@
+sch2sym -intstyle ise -family xc9500xl -refsym mioc_flop_xilinx /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sym 
+sch2hdl -intstyle ise -family xc9500xl -verilog mioc_flop_xilinx_drc.vf -w /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch 
+sch2hdl -intstyle ise -family xc9500xl -verilog mioc_flop_xilinx.vf -w /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch 
+vhdtdtfi -lib work /build/repo/mioc-verilog/mioc-flop/src/mioc_flop_xilinx.v -lang verilog -prj mioc-top -o mioc_flop_xilinx.spl -module mioc_flop_xilinx -template /build/tools/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family xc9500xl mioc_flop_xilinx.spl /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sym 
+vhdtdtfi -lang verilog -prj mioc-top -o /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.tfi -lib work /build/repo/mioc-verilog/mioc-flop/src//mioc_flop_xilinx.v -module mioc_flop_xilinx -template /build/tools/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
