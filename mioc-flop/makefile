@@ -14,10 +14,10 @@ CWD = $(shell pwd)
 RM = /usr/bin/rm
 MD = /usr/bin/mkdir
 
-V_SRC = $(shell ls src/*.v 2>/dev/null)
+V_SRC = $(shell ls src/*.v | grep "nmos"  2>/dev/null)
 
 build : clean $(V_SRC) 
-	$(COMP) -v $(V_SRC)
+	$(COMP) -v $(V_SRC) ./src/testbench.v
 
 run :   build
 	$(RUN) a.out

@@ -111,31 +111,31 @@ module testbench;
 	initial begin
 	
 		// Initialize Inputs
-		BA15 = 0;
-		BA14 = 0;
-		BA13 = 0;
-		N_CVRST = 0;
-		BD0 = 0;
-		BD1 = 0;
-		BD2 = 0;
-		BD3 = 0;
-		N_BWR = 0;
-		BA6 = 0;
-		BA7 = 0;
-		IORQ_N = 0;
-		WAIT_N = 0;
-		BUSAK_N = 0;
-		DMA_N = 0;
-		PBRST_N = 0;
-		OS3_N = 0;
-		BMREQ_N = 0;
-		BRD_N = 0;
-		BRFSH_N = 0;
-		BM1_N = 0;
-		B_PHI = 0;
+		BA15    <= 0;
+		BA14    <= 0;
+		BA13    <= 0;
+		N_CVRST <= 0;
+		BD0     <= 0;
+		BD1     <= 0;
+		BD2     <= 0;
+		BD3     <= 0;
+		N_BWR   <= 0;
+		BA6     <= 0;
+		BA7     <= 0;
+		IORQ_N  <= 1;
+		WAIT_N  <= 1;
+		BUSAK_N <= 1;
+		DMA_N   <= 1;
+		PBRST_N <= 1;
+		OS3_N   <= 1;
+		BMREQ_N <= 1;
+		BRD_N   <= 1;
+		BRFSH_N <= 1;
+		BM1_N   <= 1;
+		B_PHI   <= 1;
 
 		// Wait 100 ns for global reset to finish
-		#100;
+		#1000;
         
 		  
 		// Add stimulus here
@@ -144,12 +144,12 @@ module testbench;
       PBRST_N  <= 1'b0;
       N_CVRST  <= 1'b1;
 
-      #100;
+      #1000;
       
       PBRST_N  <= 1'b1;
       N_CVRST  <= 1'b1;
       
-      #100;
+      #1000;
 
 	end
 	
@@ -160,7 +160,7 @@ module testbench;
       //
       while (1) begin
 	      B_PHI = ~B_PHI;
-         #50;             // 300ns duty cycle (3.3Mhz)
+         #150;             // 300ns duty cycle (3.3Mhz)
       end      
    end
 	
@@ -172,7 +172,7 @@ module testbench;
    //
    initial begin
 
-      #1000; // Wait for ADAM reset (above) to complete
+      #4000; // Wait for ADAM reset (above) to complete
 
       @(negedge B_PHI);      
       BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 

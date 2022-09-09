@@ -155,7 +155,7 @@ module mioc_top(
    // SOC BLOCK NAMES ( temp here for reference of module names )
    //    
    // mioc_nor3_rtl 
-   // mioc_flop_rtl     (q is port on the right)
+   // mioc_flop_xilinx     (q is port on the right)
    // mioc_xnor2_rtl 
    // mioc_nand4_nor2_rtl 
    // mioc_nand2_rtl 
@@ -271,7 +271,7 @@ module mioc_top(
 
    // ################################### ROW 1 #############################
    //
-   mioc_flop_rtl  u1 (.q(w_u1q),
+   mioc_flop_xilinx  u1 (.q(w_u1q),
 		      .qbar(w_u1qb),
 
 		      .in1(PIN_IN_25),      // posedge reset	     
@@ -280,7 +280,7 @@ module mioc_top(
 		      .in4(PIN_IN_6)        // posedge set           
 		     );
 
-   mioc_flop_rtl  u2 (.q(w_u2q),      
+   mioc_flop_xilinx  u2 (.q(w_u2q),      
 		      .qbar(w_u2qb),
 
 		      .in1(PIN_IN_25),     // posedge reset	     
@@ -340,7 +340,7 @@ module mioc_top(
 		      .in2(w_u48z)
 		      );
    
-   mioc_flop_rtl  u14 (.q(w_u14q),
+   mioc_flop_xilinx  u14 (.q(w_u14q),
 		      .qbar(w_u14qb),
 
 		      .in1(1'b0),          // posedge reset	     
@@ -352,7 +352,7 @@ module mioc_top(
 
    // ################################### ROW 2 #############################
    //
-   mioc_flop_rtl  u17 (.q(w_u17q),
+   mioc_flop_xilinx  u17 (.q(w_u17q),
 		       .qbar(w_u17qb),
 		       
 		       .in1(PIN_IN_25),     // posedge reset	     
@@ -459,7 +459,7 @@ module mioc_top(
 		       .in2(PIN_IN_14)
 		       );
 
-   mioc_flop_rtl  u38 (.q(w_u38q),
+   mioc_flop_xilinx  u38 (.q(w_u38q),
 		       .qbar(w_u38qb),
 		       
 		       .in1(PIN_IN_25),     // posedge reset	     
@@ -488,7 +488,7 @@ module mioc_top(
 		       .in2(w_u22z)
 		       );
 
-   mioc_flop_rtl  u43 (.q(w_u43q),
+   mioc_flop_xilinx  u43 (.q(w_u43q),
 		       .qbar(w_u43qb),
 		       
 		       .in1(w_u91z),        // posedge reset	     
@@ -502,7 +502,7 @@ module mioc_top(
 		       .in2(w_u43qb)		       
 		      );
 
-   mioc_flop_rtl  u45 (.q(w_u45q),
+   mioc_flop_xilinx  u45 (.q(w_u45q),
 		       .qbar(w_u45qb),
 		       
 		       .in1(1'b0),         // posedge reset	     
@@ -547,7 +547,7 @@ module mioc_top(
 		      );
 
    
-   mioc_flop_rtl  u54 (.q(w_u54q),
+   mioc_flop_xilinx  u54 (.q(w_u54q),
 		       .qbar(w_u54qb),
 		       
 		       .in1(1'b0),         // posedge reset	     
@@ -567,7 +567,7 @@ module mioc_top(
 		       .in2(w_u73z)
 		       );
    
-   mioc_flop_rtl  u57 (.q(w_u57q),
+   mioc_flop_xilinx  u57 (.q(w_u57q),
 		       .qbar(w_u57qb),
 		       
 		       .in1(w_u91z),        // posedge reset	     
@@ -586,7 +586,7 @@ module mioc_top(
 		       .in2(w_u14qb)		       
 		      );
    
-   mioc_flop_rtl  u60 (.q(w_u60q),
+   mioc_flop_xilinx  u60 (.q(w_u60q),
 		       .qbar(w_u60qb),
 		       
 		       .in1(1'b0),           // posedge reset	     
@@ -663,7 +663,7 @@ module mioc_top(
 		      );      
    
 
-   mioc_flop_rtl  u77 (.q(w_u77q),
+   mioc_flop_xilinx  u77 (.q(w_u77q),
 		       .qbar(w_u77qb),
 		       
 		       .in1(1'b0),           // posedge reset	     
@@ -726,7 +726,7 @@ module mioc_top(
 		       .in2(w_u65z)		       
 		      );
 
-   mioc_flop_rtl u88 (.q(w_u88q),      
+   mioc_flop_xilinx u88 (.q(w_u88q),      
 		      .qbar(w_u88qb),
 
 		      .in1(w_u91z),      // posedge reset	     
@@ -740,7 +740,7 @@ module mioc_top(
 		       );         
 
 
-   mioc_flop_rtl u90 (.q(w_u90q),      
+   mioc_flop_xilinx u90 (.q(w_u90q),      
 		      .qbar(w_u90qb),
 
 		      .in1(w_u91z),      // posedge reset	     
@@ -753,7 +753,7 @@ module mioc_top(
 		       .in1(w_u53z)
 		       );         
 
-   mioc_flop_rtl u92 (.q(w_u92q),      
+   mioc_flop_xilinx u92 (.q(w_u92q),      
 		      .qbar(w_u92qb),
 
 		      .in1(w_u91z),      // posedge reset	     
@@ -762,7 +762,7 @@ module mioc_top(
 		      .in4(w_u59z)	 // posedge set           
 	              );   
 
-   mioc_flop_rtl u93 (.q(w_u93q),      
+   mioc_flop_xilinx u93 (.q(w_u93q),      
 		      .qbar(w_u93qb),
 
 		      .in1(w_u91z),      // posedge reset	     
@@ -785,7 +785,7 @@ module mioc_top(
    assign RA7           = w_u23z;   //: pin 2 : (goes to U9 , RAM Address 7.This is the multiplexed RAM address MSB.)	       
    assign BUSRQ_N       = w_u86z;   //: pin18 : Active low bus request
    assign SPINDIS_N     = w_u88qb;  //: pin19 : Active low Controller Spinner Interrupt Disable
-   assign NETRST_N      = w_u89z;   //: pin20 : Active low - Reset for AdamNET
+   assign NETRST_N      = w_u90qb;   //: pin20 : Active low - Reset for AdamNET
    assign AUXDECODE1_N  = w_u42z;   //: pin 22 : Active low - Disables the onboard mem decode on CV board?
    assign RST_N         = w_u53z;   //: pin 23 : Active low reset - System Reset circuitry
    assign CPRST_N       = w_u94z;   //: pin 24 : Active low reset - not used

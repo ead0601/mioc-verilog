@@ -785,7 +785,7 @@ module mioc_top(
    assign RA7           = w_u23z;   //: pin 2 : (goes to U9 , RAM Address 7.This is the multiplexed RAM address MSB.)	       
    assign BUSRQ_N       = w_u86z;   //: pin18 : Active low bus request
    assign SPINDIS_N     = w_u88qb;  //: pin19 : Active low Controller Spinner Interrupt Disable
-   assign NETRST_N      = w_u89z;   //: pin20 : Active low - Reset for AdamNET
+   assign NETRST_N      = w_u90qb;   //: pin20 : Active low - Reset for AdamNET
    assign AUXDECODE1_N  = w_u42z;   //: pin 22 : Active low - Disables the onboard mem decode on CV board?
    assign RST_N         = w_u53z;   //: pin 23 : Active low reset - System Reset circuitry
    assign CPRST_N       = w_u94z;   //: pin 24 : Active low reset - not used

@@ -69,7 +69,7 @@ module testbench ();
    // Design
    //
    //mioc_flop_nmos reg1(.q(q),
-   mioc_flop_rtl reg1(.q(q),
+   mioc_flop_nmos reg1(.q(q),
 		       .qbar(qbar),
 		       .in1(in1),
 		       .in2(in2),

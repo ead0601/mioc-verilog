@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/build/repo/mioc-verilog/xilinx/mioc-top/testbench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="88" />
+   <wvobject fp_name="/testbench/RA7" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RA7</obj_property>
+      <obj_property name="ObjectShortName">RA7</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BUSRQ_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BUSRQ_N</obj_property>
+      <obj_property name="ObjectShortName">BUSRQ_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/SPINDIS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPINDIS_N</obj_property>
+      <obj_property name="ObjectShortName">SPINDIS_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/NETRST_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">NETRST_N</obj_property>
+      <obj_property name="ObjectShortName">NETRST_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/AUXDECODE1_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">AUXDECODE1_N</obj_property>
+      <obj_property name="ObjectShortName">AUXDECODE1_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/RST_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RST_N</obj_property>
+      <obj_property name="ObjectShortName">RST_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/CPRST_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CPRST_N</obj_property>
+      <obj_property name="ObjectShortName">CPRST_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/AUXROMCS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">AUXROMCS_N</obj_property>
+      <obj_property name="ObjectShortName">AUXROMCS_N</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/ADDRBUFEN_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ADDRBUFEN_N</obj_property>
+      <obj_property name="ObjectShortName">ADDRBUFEN_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BOOTROMCS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BOOTROMCS_N</obj_property>
+      <obj_property name="ObjectShortName">BOOTROMCS_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/EN245_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">EN245_N</obj_property>
+      <obj_property name="ObjectShortName">EN245_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/IS3_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">IS3_N</obj_property>
+      <obj_property name="ObjectShortName">IS3_N</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/MUX" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MUX</obj_property>
+      <obj_property name="ObjectShortName">MUX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/RAS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RAS_N</obj_property>
+      <obj_property name="ObjectShortName">RAS_N</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/CAS1_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CAS1_N</obj_property>
+      <obj_property name="ObjectShortName">CAS1_N</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/CAS2_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CAS2_N</obj_property>
+      <obj_property name="ObjectShortName">CAS2_N</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BA15" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BA15</obj_property>
+      <obj_property name="ObjectShortName">BA15</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BA14" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BA14</obj_property>
+      <obj_property name="ObjectShortName">BA14</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BA13" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BA13</obj_property>
+      <obj_property name="ObjectShortName">BA13</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/N_CVRST" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">N_CVRST</obj_property>
+      <obj_property name="ObjectShortName">N_CVRST</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BD0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BD0</obj_property>
+      <obj_property name="ObjectShortName">BD0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BD1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BD1</obj_property>
+      <obj_property name="ObjectShortName">BD1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BD2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BD2</obj_property>
+      <obj_property name="ObjectShortName">BD2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BD3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BD3</obj_property>
+      <obj_property name="ObjectShortName">BD3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/N_BWR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">N_BWR</obj_property>
+      <obj_property name="ObjectShortName">N_BWR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BA6" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BA6</obj_property>
+      <obj_property name="ObjectShortName">BA6</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BA7" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BA7</obj_property>
+      <obj_property name="ObjectShortName">BA7</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/IORQ_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">IORQ_N</obj_property>
+      <obj_property name="ObjectShortName">IORQ_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/WAIT_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WAIT_N</obj_property>
+      <obj_property name="ObjectShortName">WAIT_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BUSAK_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BUSAK_N</obj_property>
+      <obj_property name="ObjectShortName">BUSAK_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/DMA_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">DMA_N</obj_property>
+      <obj_property name="ObjectShortName">DMA_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/PBRST_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">PBRST_N</obj_property>
+      <obj_property name="ObjectShortName">PBRST_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/OS3_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">OS3_N</obj_property>
+      <obj_property name="ObjectShortName">OS3_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BMREQ_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BMREQ_N</obj_property>
+      <obj_property name="ObjectShortName">BMREQ_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BRD_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BRD_N</obj_property>
+      <obj_property name="ObjectShortName">BRD_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BRFSH_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BRFSH_N</obj_property>
+      <obj_property name="ObjectShortName">BRFSH_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/BM1_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BM1_N</obj_property>
+      <obj_property name="ObjectShortName">BM1_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/B_PHI" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">B_PHI</obj_property>
+      <obj_property name="ObjectShortName">B_PHI</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/RAS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RAS_N</obj_property>
+      <obj_property name="ObjectShortName">RAS_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider45" type="divider">
+      <obj_property name="label">U14</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u14/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider46" type="divider">
+      <obj_property name="label">U45</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u45/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider53" type="divider">
+      <obj_property name="label">U54</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u54/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider62" type="divider">
+      <obj_property name="label">U60</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u60/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider69" type="divider">
+      <obj_property name="label">U77</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u77/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider75" type="divider">
+      <obj_property name="label">U92</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u92/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider82" type="divider">
+      <obj_property name="label">U93</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/q" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">q</obj_property>
+      <obj_property name="ObjectShortName">q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/qbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">qbar</obj_property>
+      <obj_property name="ObjectShortName">qbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/in1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in1</obj_property>
+      <obj_property name="ObjectShortName">in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/in2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in2</obj_property>
+      <obj_property name="ObjectShortName">in2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/in3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in3</obj_property>
+      <obj_property name="ObjectShortName">in3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/u93/in4" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">in4</obj_property>
+      <obj_property name="ObjectShortName">in4</obj_property>
+   </wvobject>
+</wave_config>

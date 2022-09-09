@@ -1,0 +1,3 @@
+sch2sym -intstyle ise -family xc9500xl -refsym {} /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch /build/repo/mioc-verilog/xilinx/mioc-top/.sym 
+sch2sym -intstyle ise -family xc9500xl -refsym {} /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch /build/repo/mioc-verilog/xilinx/mioc-top/.sym 
+sch2sym -intstyle ise -family xc9500xl -refsym {} /build/repo/mioc-verilog/xilinx/mioc-top/mioc_flop_xilinx.sch /build/repo/mioc-verilog/xilinx/mioc-top/.sym 

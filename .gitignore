@@ -9,6 +9,7 @@
 !**/.empty
 !**/DATA_GOLD/tester.vcd
 
+**/*.log
 **/*.wdb
 **/tmperr.err
 **/_ngo/
