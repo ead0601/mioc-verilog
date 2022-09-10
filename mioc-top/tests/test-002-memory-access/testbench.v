@@ -184,36 +184,159 @@ module testbench ();
    // #################  INSERT CUSTOM SEQUENCE BELOW #################
    // #################  INSERT CUSTOM SEQUENCE BELOW #################
    // #################  INSERT CUSTOM SEQUENCE BELOW #################     
+
+   // Repetative write task
+   //
+   task cpu_write;
+      
+      input a6, a7, a13, a14, a15;
+      
+      begin
+	 // ############# STEP 1
+	 // 	 
+	 //WAIT_N  <= 1'b1;   DYNAMICALLY SET BEFORE CALLING TASK
+	 //BM1_N   <= 1'b1;
+	 //BA7     <= 1'b0;
+	 //BA6     <= 1'b0; 
+	 //IORQ_N  <= 1'b1;            
+	 //OS3_N   <= 1'b1;
+	 //DMA_N   <= 1'b1;
+	 
+	 BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
+	 BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
+	 BA6     <= a6;
+	 BA7     <= a7;	 
+	 BA13    <= a13;	 
+	 BA14    <= a14;	 
+	 BA15    <= a15;	 	 
+	 N_BWR   <= 1'b0; 
+	 BUSAK_N <= 1'b0;    
+	 
+	 // ############# STEP 2
+	 
+	 @(negedge B_PHI);
+	 WAIT_N  <= 1'b1;
+	 BM1_N   <= 1'b1;
+	 IORQ_N  <= 1'b1;
+	 OS3_N   <= 1'b1;      
+	 DMA_N   <= 1'b1;      
+         
+	 BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
+	 BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
+	 BA6     <= 1'b0;
+	 BA7     <= 1'b0;
+	 BA13    <= 1'b0;
+	 BA14    <= 1'b0;
+	 BA15    <= 1'b0;	 
+	 N_BWR   <= 1'b0;    
+	 BUSAK_N <= 1'b0;
+	 
+	 // ############# STEP 3
+	 
+	 @(negedge B_PHI);
+	 WAIT_N  <= 1'b1;
+	 BM1_N   <= 1'b1;      
+	 BA7     <= 1'b0;
+	 BA6     <= 1'b0;
+	 IORQ_N  <= 1'b1;
+	 OS3_N   <= 1'b1;
+	 DMA_N   <= 1'b1;            
+	 
+	 BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
+	 BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
+	 BA6     <= 1'b0;
+	 BA7     <= 1'b0;
+	 BA13    <= 1'b0;
+	 BA14    <= 1'b0;
+	 BA15    <= 1'b0;	 	
+	 N_BWR   <= 1'b1; 
+	 BUSAK_N <= 1'b1;
+      end
+   endtask
+
    
-   // Init file handles and waveform dumping
+   // MAIN TEST SEQUENCE 
    //
    initial begin
 
       #2000; // Wait for ADAM reset (above) to complete
 
-      @(negedge B_PHI);      
-      BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-      BA13    <= 1'b1;
-      N_BWR   <= 1'b0; 
-      BUSAK_N <= 1'b0;    
+      // ############# SEQ1
       
-      @(negedge B_PHI);            
-      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA13    <= 1'b0;
-      N_BWR   <= 1'b0;    
-      BUSAK_N <= 1'b0;            
-
       @(negedge B_PHI);
-      @(negedge B_PHI);
-      @(negedge B_PHI);      
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;
+      BA7     <= 1'b0;
+      BA6     <= 1'b0; 
+      IORQ_N  <= 1'b1;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1;      
 
-      BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
-      BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
-      BA13    <= 1'b0;
-      N_BWR   <= 1'b1; 
-      BUSAK_N <= 1'b1;
+      cpu_write(0,0,1,0,0);
+      
+      #1000;
+      
+      // ############# SEQ2
+      
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;
+      BA7     <= 1'b0;
+      BA6     <= 1'b0; 
+      IORQ_N  <= 1'b1;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b0;    // DMA_N ACTIVE 
+
+      cpu_write(0,0,1,0,0);
+      
+      #1000;
+
+      // ############# SEQ3
+      
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;   
+      BA7     <= 1'b1;
+      BA6     <= 1'b0; 
+      IORQ_N  <= 1'b1;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1; 
+
+      cpu_write(0,0,0,1,0);
+
+      #1000;
+
+      // ############# SEQ4
+      
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;   
+      BA7     <= 1'b1;
+      BA6     <= 1'b0; 
+      IORQ_N  <= 1'b1;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1; 
+
+      cpu_write(0,0,0,0,1);
+
+      
+      #1000;
+
+      // ############# SEQ5
+      
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;   
+      BA7     <= 1'b1;
+      BA6     <= 1'b0; 
+      IORQ_N  <= 1'b0;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1; 
+
+      cpu_write(1,1,0,0,0);
+
+
+      // ############# END
       
       #2000;
       
