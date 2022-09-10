@@ -52,6 +52,11 @@ module testbench ();
    wire   CAS1_N       ; //: pin 39 : Active low column address strobe 1						 
    wire   CAS2_N       ; //: pin 40 : Active low column address strobe 2                                                 
 
+   reg 	     rw;
+   reg [1:0] addrl;
+   reg [2:0] addrh;   
+   reg [3:0] data;   
+   
    // Instantiate Design
    //
    mioc_top mioc (
@@ -187,29 +192,31 @@ module testbench ();
 
    // Repetative write task
    //
-   task cpu_write;
+   task cpu_rw;
       
-      input a6, a7, a13, a14, a15;
-      
+      input rw;
+      input [1:0] addrl;
+      input [2:0] addrh;      
+      input [3:0] data;
+
       begin
 	 // ############# STEP 1
 	 // 	 
-	 //WAIT_N  <= 1'b1;   DYNAMICALLY SET BEFORE CALLING TASK
-	 //BM1_N   <= 1'b1;
-	 //BA7     <= 1'b0;
-	 //BA6     <= 1'b0; 
-	 //IORQ_N  <= 1'b1;            
-	 //OS3_N   <= 1'b1;
-	 //DMA_N   <= 1'b1;
-	 
 	 BMREQ_N <= 1'b0;  //: pin 32 : Active low Buffered Memory Request						 
 	 BRD_N   <= 1'b0;  //: pin 33 : Active low Buffered Memory Read
-	 BA6     <= a6;
-	 BA7     <= a7;	 
-	 BA13    <= a13;	 
-	 BA14    <= a14;	 
-	 BA15    <= a15;	 	 
-	 N_BWR   <= 1'b0; 
+
+	 BA6     <= addrl[0];
+	 BA7     <= addrl[1];	 
+	 BA13    <= addrh[0];	 
+	 BA14    <= addrh[1];	 
+	 BA15    <= addrh[2];
+         BD0     <= data[0];
+         BD1     <= data[1];
+         BD2     <= data[2];
+         BD3     <= data[3];	 
+	 	 
+	 N_BWR   <= rw;        // W (rw=0)
+	 BRD_N 	 <= ~rw;	 
 	 BUSAK_N <= 1'b0;    
 	 
 	 // ############# STEP 2
@@ -223,12 +230,19 @@ module testbench ();
          
 	 BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
 	 BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
+
 	 BA6     <= 1'b0;
 	 BA7     <= 1'b0;
 	 BA13    <= 1'b0;
 	 BA14    <= 1'b0;
-	 BA15    <= 1'b0;	 
-	 N_BWR   <= 1'b0;    
+	 BA15    <= 1'b0;
+         BD0     <= 1'b0;
+         BD1     <= 1'b0;
+         BD2     <= 1'b0;
+         BD3     <= 1'b0;
+
+	 N_BWR   <= rw;
+	 BRD_N 	 <= ~rw;	 	 
 	 BUSAK_N <= 1'b0;
 	 
 	 // ############# STEP 3
@@ -244,12 +258,19 @@ module testbench ();
 	 
 	 BMREQ_N <= 1'b1;  //: pin 32 : Active low Buffered Memory Request						 
 	 BRD_N   <= 1'b1;  //: pin 33 : Active low Buffered Memory Read
+
 	 BA6     <= 1'b0;
 	 BA7     <= 1'b0;
 	 BA13    <= 1'b0;
 	 BA14    <= 1'b0;
-	 BA15    <= 1'b0;	 	
-	 N_BWR   <= 1'b1; 
+	 BA15    <= 1'b0;
+         BD0     <= 1'b0;
+         BD1     <= 1'b0;
+         BD2     <= 1'b0;
+         BD3     <= 1'b0;
+
+	 N_BWR   <= 1'b1;
+	 BRD_N 	 <= 1'b1;	 	 
 	 BUSAK_N <= 1'b1;
       end
    endtask
@@ -266,14 +287,16 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;
-      BA7     <= 1'b1;
-      BA6     <= 1'b1; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1;
       BRFSH_N <= 1'b0;      
 
-      cpu_write(1,0,0,0,0);
+      rw       = 1'b1;
+      addrl    = 2'b01;
+      addrh    = 3'b000;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
 
       BRFSH_N <= 1'b1;            
       
@@ -282,14 +305,34 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;
-      BA7     <= 1'b1;
-      BA6     <= 1'b1; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1;
       BRFSH_N <= 1'b0;      
 
-      cpu_write(0,1,0,0,0);
+      rw       = 1'b1;
+      addrl    = 2'b10;
+      addrh    = 3'b000;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
+      
+      BRFSH_N <= 1'b1;            
+      
+      #1000;
+
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;
+      IORQ_N  <= 1'b1;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1;
+      BRFSH_N <= 1'b0;      
+
+      rw       = 1'b1;
+      addrl    = 2'b11;
+      addrh    = 3'b000;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
 
       BRFSH_N <= 1'b1;            
       
@@ -298,30 +341,16 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;
-      BA7     <= 1'b1;
-      BA6     <= 1'b1; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1;
       BRFSH_N <= 1'b0;      
 
-      cpu_write(1,1,0,0,0);
-
-      BRFSH_N <= 1'b1;            
-      
-      #1000;
-
-      @(negedge B_PHI);
-      WAIT_N  <= 1'b1;
-      BM1_N   <= 1'b1;
-      BA7     <= 1'b1;
-      BA6     <= 1'b1; 
-      IORQ_N  <= 1'b1;            
-      OS3_N   <= 1'b1;
-      DMA_N   <= 1'b1;
-      BRFSH_N <= 1'b0;      
-
-      cpu_write(0,0,0,0,0);
+      rw       = 1'b1;
+      addrl    = 2'b00;
+      addrh    = 3'b000;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
 
       BRFSH_N <= 1'b1;            
       
@@ -332,14 +361,16 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;
-      BA7     <= 1'b0;
-      BA6     <= 1'b0; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b0;    // DMA_N ACTIVE 
 
-      cpu_write(0,0,1,0,0);
-      
+      rw       = 1'b0;
+      addrl    = 2'b00;
+      addrh    = 3'b001;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
+
       #1000;
 
       // ############# SEQ3
@@ -347,13 +378,15 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;   
-      BA7     <= 1'b1;
-      BA6     <= 1'b0; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1; 
 
-      cpu_write(0,0,0,1,0);
+      rw       = 1'b0;
+      addrl    = 2'b00;
+      addrh    = 3'b010;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
 
       #1000;
 
@@ -362,14 +395,32 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;   
-      BA7     <= 1'b1;
-      BA6     <= 1'b0; 
       IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1; 
 
-      cpu_write(0,0,0,0,1);
+      rw       = 1'b0;
+      addrl    = 2'b00;
+      addrh    = 3'b100;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
 
+      #1000;
+
+      // ############# SEQ5
+      
+      @(negedge B_PHI);
+      WAIT_N  <= 1'b1;
+      BM1_N   <= 1'b1;   
+      IORQ_N  <= 1'b0;            
+      OS3_N   <= 1'b1;
+      DMA_N   <= 1'b1; 
+
+      rw       = 1'b0;
+      addrl    = 2'b01;
+      addrh    = 3'b100;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
       
       #1000;
 
@@ -378,15 +429,17 @@ module testbench ();
       @(negedge B_PHI);
       WAIT_N  <= 1'b1;
       BM1_N   <= 1'b1;   
-      BA7     <= 1'b1;
-      BA6     <= 1'b0; 
-      IORQ_N  <= 1'b0;            
+      IORQ_N  <= 1'b1;            
       OS3_N   <= 1'b1;
       DMA_N   <= 1'b1; 
 
-      cpu_write(1,1,0,0,0);
-
-
+      rw       = 1'b0;
+      addrl    = 2'b11;
+      addrh    = 3'b000;
+      data     = 4'b0000;      
+      cpu_rw(rw,addrl,addrh,data);
+      
+      
       // ############# END
       
       #2000;
