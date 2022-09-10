@@ -1,0 +1,67 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sat Sep 10 03:26:53 2022
+[*]
+[dumpfile] "/build/repo/mioc-verilog/mioc-top/tests/test-003-ra7-access/DATA_OUT/waves.vcd"
+[dumpfile_mtime] "Sat Sep 10 03:26:00 2022"
+[dumpfile_size] 19835
+[savefile] "/build/repo/mioc-verilog/mioc-top/tests/test-003-ra7-access/waves.gtkw"
+[timestart] 0
+[size] 1559 965
+[pos] -1 -1
+*-11.000000 6500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[treeopen] testbench.mioc.
+[sst_width] 480
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 284
+@200
+-INPUTS
+@28
+testbench.BA15
+testbench.BA14
+testbench.BA13
+testbench.BA7
+testbench.BA6
+testbench.BD3
+testbench.BD2
+testbench.BD1
+testbench.BD0
+testbench.B_PHI
+testbench.BM1_N
+testbench.BMREQ_N
+testbench.BRD_N
+testbench.BRFSH_N
+testbench.BUSAK_N
+@29
+testbench.DMA_N
+@28
+testbench.IORQ_N
+testbench.N_BWR
+testbench.N_CVRST
+testbench.OS3_N
+testbench.PBRST_N
+testbench.WAIT_N
+@200
+-
+-OUTPUTS
+@28
+testbench.ADDRBUFEN_N
+testbench.AUXDECODE1_N
+testbench.AUXROMCS_N
+testbench.BOOTROMCS_N
+testbench.BUSRQ_N
+testbench.MUX
+testbench.RAS_N
+testbench.CAS1_N
+testbench.CAS2_N
+testbench.CPRST_N
+testbench.EN245_N
+testbench.IS3_N
+testbench.NETRST_N
+testbench.RA7
+testbench.RST_N
+testbench.SPINDIS_N
+[pattern_trace] 1
+[pattern_trace] 0
