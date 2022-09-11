@@ -218,6 +218,7 @@ module testbench ();
 	 N_BWR   <= rw;        // W (rw=0)
 	 BRD_N 	 <= ~rw;	 
 	 BUSAK_N <= 1'b0;    
+
 	 
 	 // ############# STEP 2
 	 
@@ -244,14 +245,13 @@ module testbench ();
 	 N_BWR   <= rw;
 	 BRD_N 	 <= ~rw;	 	 
 	 BUSAK_N <= 1'b0;
+	
 	 
 	 // ############# STEP 3
 	 
 	 @(negedge B_PHI);
 	 WAIT_N  <= 1'b1;
 	 BM1_N   <= 1'b1;      
-	 BA7     <= 1'b0;
-	 BA6     <= 1'b0;
 	 IORQ_N  <= 1'b1;
 	 OS3_N   <= 1'b1;
 	 DMA_N   <= 1'b1;            
